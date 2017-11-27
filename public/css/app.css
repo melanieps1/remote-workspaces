@@ -1,10 +1,3 @@
-body {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12px;
-	margin: 0;
-	padding: 0;
-}
-
 nav {
 	background-color: #455A64;
 	display: block;
@@ -65,4 +58,11 @@ nav {
 	padding-right: 12px;
 	padding-top: 7px;
 	text-decoration: none;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
 }
