@@ -16,46 +16,31 @@
 <body>
     <div id="app">
         <nav>
-            <div>
-                <div>
+            <div class="nav-logo">
+                <a href="/"><img src="{{ asset('images/remoteworkspaces.svg') }}" alt="Remote Workspaces" id="logo"></a>
+            </div>
 
-                    <!-- Branding Image -->
-                    <a href="{{ url('/') }}">
-                        {{ 'Remote Workspaces' }}
-                    </a>
-                </div>
+            <div class="nav-buttons">
+                    @if (Auth::guest())
+                        <a href="{{ route('login') }}" class="log-in-out-btn">Log In</a>
+                        <a href="{{ route('register') }}" class="log-in-out-btn">Sign Up</a>
+                    @else
 
-                <div>
+                        <a href="#" class="primary-btn">
+                            Add a Workspace
+                        </a>
 
-                    <ul>
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li>
-                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();"
+                            class="log-in-out-btn">
+                            Logout
+                        </a>
 
-                                <ul>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-
-                </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            {{ csrf_field() }}
+                        </form>
+                    @endif
             </div>
         </nav>
 

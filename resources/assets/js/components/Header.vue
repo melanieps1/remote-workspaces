@@ -1,16 +1,20 @@
 <template>
-    <div>Example Component</div>
+    
+    <header>
+        <a href="/">Remote Workspaces</a>
+    </header>
 
-        <div>
-            I'm an example component!
-        </div>
-    </div>
 </template>
 
 <script>
     export default {
+        name: 'header',
         mounted() {
             console.log('Component mounted.')
         }
     }
 </script>
+
+<style>
+    
+</style>

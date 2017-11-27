@@ -7,21 +7,48 @@
 
         <title>Remote Workspaces</title>
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     </head>
     <body>
         <div>
             @if (Route::has('login'))
-                <div>
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
+
+            <nav>
+                <div class="nav-logo">
+                    <a href="/"><img src="{{ asset('images/remoteworkspaces.svg') }}" alt="Remote Workspaces" id="logo"></a>
                 </div>
+
+                <div class="nav-buttons">
+                        @if (Auth::check())
+
+                            <a href="#" class="primary-btn">
+                                Add a Workspace
+                            </a>
+
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();"
+                                class="log-in-out-btn">
+                                Logout
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                            </form>
+                        @else
+
+                            <a href="{{ route('login') }}" class="log-in-out-btn">Log In</a>
+                            <a href="{{ route('register') }}" class="log-in-out-btn">Sign Up</a>
+
+                        @endif
+                </div>
+            </nav>
+
             @endif
 
-            <h1>Remote Workspaces</h1>
+            <br><br><br><br>
+            You are logged out!  This is welcome.blade.php showing.
 
         </div>
     </body>

@@ -8,6 +8,8 @@
         </div>
     @endif
 
-    You are logged in!
+<br><br><br><br>
+    You are logged in!  This is home.blade.php showing.
+
 </div>
 @endsection
