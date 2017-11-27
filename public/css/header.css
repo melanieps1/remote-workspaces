@@ -2,6 +2,7 @@ nav {
 	background-color: #455A64;
 	display: block;
   margin: 0;
+  margin-bottom: 24px;
   min-height: 50px;
   padding: 0;
   position: fixed;
