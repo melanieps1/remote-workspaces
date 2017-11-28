@@ -8,8 +8,8 @@
         </div>
     @endif
 
-<br><br><br><br>
   <div class="leftSide">
+    <br><br><br><br>
     This is results.blade.php showing.  After clicking "Search" on home.blade, the site will redirect to this page and show the results and a map.
 
     <ul>
@@ -19,16 +19,36 @@
   	</ul>
   </div>
 
-  <div id="map"></div>
+  <div class="mapContainer">
+    <div id="map"></div>
+  </div>
 
   <script>
-    var map;
+
     function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 38.04216, lng: -84.4925379999999},
-        zoom: 12
+      var searchedArea = {lat: 38.0406, lng: -84.5037};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: searchedArea,
+        zoom: 14
+      });
+
+      // add a marker
+      var marker = new google.maps.Marker({
+        position: {lat: 38.04216,lng: -84.4925379999999},
+        map: map
+      });
+
+      // tooltip for marker
+      var infoWindow = new google.maps.InfoWindow({
+        content: '<p><strong>Awesome Inc</strong></p>'
+      });
+
+      // event listener for tooltip to show up on click
+      marker.addListener('click', function() {
+        infoWindow.open(map, marker);
       });
     }
+
   </script>
 
 </div>

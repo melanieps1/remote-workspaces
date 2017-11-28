@@ -2,8 +2,8 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible content-type" content="IE=edge; text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -44,11 +44,12 @@
             </div>
         </nav>
 
-        @yield('content')
+@yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw&callback=initMap" async defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw&callback=initMap"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw&libraries=places"></script>
 </body>
 </html>
