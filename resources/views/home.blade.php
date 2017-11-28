@@ -1,15 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
+<div class="homeBlade">
     @if (session('status'))
         <div>
             {{ session('status') }}
         </div>
     @endif
 
-<br><br><br><br>
-    You are logged in!  This is home.blade.php showing.
+	<div class="floatingForm">
+		<h2>Find workspaces in your city</h2>
+    <form method="POST" action="/results">
+    	<input name="_method" type="hidden" value="POST">
+    	{{ csrf_field() }}
+    		<div>
+			    <button type="submit" name="button" value="search">
+			    	See Results
+			    </button>
+		  	</div>
+  	</form>
+	</div>
 
 </div>
 @endsection

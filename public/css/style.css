@@ -4,3 +4,26 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+.homeBlade {
+	background-image: url(/images/landing-page-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position:absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.floatingForm {
+	background-color: rgba(255, 255, 255, 0.55);
+	height: 295px;
+	left: -webkit-calc( 50% - 350px );
+	overflow: hidden;
+	position: absolute;
+	text-align: center;
+	top: 25%;
+	width: 700px;
+}

@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function components()
+    {
+        return view('components');
+    }
+
+    public function search(Request $request)
+    {
+        return view('results');
+    }
 }

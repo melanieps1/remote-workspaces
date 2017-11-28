@@ -38,6 +38,11 @@ nav {
 	text-decoration: none;
 }
 
+.log-in-out-btn:hover {
+	box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, .6);
+	cursor: pointer;
+}
+
 #logout-form {
 	display: none;
 }
@@ -59,4 +64,9 @@ nav {
 	padding-right: 12px;
 	padding-top: 7px;
 	text-decoration: none;
+}
+
+.primary-btn:hover {
+	box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, .6);
+	cursor: pointer;
 }

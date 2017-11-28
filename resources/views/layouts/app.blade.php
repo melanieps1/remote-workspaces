@@ -17,7 +17,7 @@
     <div id="app">
         <nav>
             <div class="nav-logo">
-                <a href="/"><img src="{{ asset('images/remoteworkspaces.svg') }}" alt="Remote Workspaces" id="logo"></a>
+                <a href="/home"><img src="{{ asset('images/remoteworkspaces.svg') }}" alt="Remote Workspaces" id="logo"></a>
             </div>
 
             <div class="nav-buttons">
