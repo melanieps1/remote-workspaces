@@ -27,3 +27,18 @@ body {
 	top: 25%;
 	width: 700px;
 }
+
+.leftSide {
+	width: 55%;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+#map {
+	background-color: #f3f6f7;
+	float: right;
+	height: 800px;
+	margin: 24px;
+	width: 40%;
+}
