@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,16 +24,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $workspaces = \App\Workspace::all(); (this is the same thing, just without the DB facade)
+        $workspaces = DB::table('workspaces')->get();
+
+        return view('/results', compact('workspaces'));
+
+    }
+
+    public function home()
+    {
         return view('home');
     }
 
     public function components()
     {
         return view('components');
-    }
-
-    public function search(Request $request)
-    {
-        return view('results');
     }
 }
