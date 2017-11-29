@@ -1,10 +1,5 @@
 <template>
-    <div>Example Component</div>
-
-        <div>
-            I'm an example component!
-        </div>
-    </div>
+        <div>I'm an example component!</div>
 </template>
 
 <script>
