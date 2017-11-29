@@ -91,7 +91,6 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
 }
 
 .floatingForm {
@@ -119,7 +118,6 @@ body {
 	float: right;
 	margin: 74px 24px 24px;
 	width: 40%;
-<<<<<<< HEAD
 	z-index: 1;
 }
 
@@ -127,7 +125,6 @@ body {
 	display: block !important;
 	height: 100%;
 	width: 100%;
-=======
 }
 
 .searchDiv {
@@ -157,5 +154,4 @@ body {
 .searchBarHome[type="text"] {
 	color: #000000;
 	font-size: 20px;
->>>>>>> master
 }
