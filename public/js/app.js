@@ -99,8 +99,9 @@ module.exports = __webpack_require__(2);
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 // Vue Stuff
 
 window.Vue = __webpack_require__(3);
@@ -117,8 +118,9 @@ var app = new Vue({
 				},
 
 				methods: {
-								geocode: function geocode(e) {
-												e.preventDefault();
+								geocode: function geocode() {
+												// geocode(e) {
+												// e.preventDefault();
 
 												axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
 																params: {

@@ -13,9 +13,12 @@ class WorkspaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        //
+        // $workspaces = \App\Workspace::all(); (this is the same thing, just without the DB facade)
+        $workspaces = DB::table('workspaces')->get();
+
+        return view('/results', compact('workspaces'));
     }
 
     /**

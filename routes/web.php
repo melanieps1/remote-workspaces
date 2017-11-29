@@ -8,6 +8,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 
-Route::get('/components', 'HomeController@components')->name('components');
-
-Route::post('/results', 'HomeController@index')->name('results');
+Route::post('/results', 'WorkspaceController@index')->name('results');

@@ -15,8 +15,9 @@ const app = new Vue({
 
     methods: {
 
-    	geocode(e) {
-		    e.preventDefault();
+    	geocode() {
+    	// geocode(e) {
+		    // e.preventDefault();
 
 		    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
 		        params: {
