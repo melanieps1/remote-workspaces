@@ -55,5 +55,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw"></script>
 </body>
 </html>
