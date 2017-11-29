@@ -42,3 +42,32 @@ body {
 	margin: 24px;
 	width: 40%;
 }
+
+.searchDiv {
+	height: 50px;
+	margin: 40px, 24px;
+	width: 522px;
+}
+
+.orangeAccent {
+	background-color: #FF5722;
+	height: 50px;
+	position: relative;
+	width: 4px;
+}
+
+.searchBarHome {
+	border: none;
+	height: 50px;
+	width: 522px;
+}
+
+.searchBarHome::placeholder {
+	color: #CCCCCC;
+	font-size: 20px;
+}
+
+.searchBarHome[type="text"] {
+	color: #000000;
+	font-size: 20px;
+}
