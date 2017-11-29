@@ -24,9 +24,10 @@
     			    </button>
               	</form>
             </div>
-        <p class="grayText">
-            Whether you are in your hometown or a new city, use Remote Workspaces to find a spot that fits your needs so you can confidently work from anywhere.
-        </p>
+            <br><br><br>
+            <p class="grayText">
+                Whether you are in your hometown or a new city, use Remote Workspaces to find a spot that fits your needs so you can confidently work from anywhere.
+            </p>
 	</div>
 
 </div>
