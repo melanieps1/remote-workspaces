@@ -9,6 +9,13 @@ body {
 	font-size: 12px;
 }
 
+h2 {
+	font-size: 30px;
+	font-weight: 600;
+}
+
+/* home.blade.php */
+
 .homeBlade {
 	background-image: url(/images/landing-page-bg.jpg);
 	background-repeat: no-repeat;
@@ -31,6 +38,76 @@ body {
 	width: 700px;
 }
 
+.searchDiv {
+	height: 50px;
+	margin: 40px, 24px;
+	width: 522px;
+	z-index: -1;
+}
+
+.orangeAccent {
+	background-color: #FF5722;
+	height: 50px;
+	margin-left: 24px;
+	position: absolute;
+	width: 4px;
+	z-index: 1;
+}
+
+.searchBarHome {
+	border: none;
+	float: left;
+	height: 50px;
+	margin-left: 24px;
+	padding: 0;
+	width: 506px;
+}
+
+.searchBarHome::placeholder {
+	color: #CCCCCC;
+	font-size: 20px;
+}
+
+.searchBarHome[type="text"] {
+	color: #000000;
+	font-size: 20px;
+	padding-left: 16px;
+}
+
+.searchBtnHome {
+	background-color: #FF5722;
+	border: none;
+	border-radius: 0;
+	color: white;
+	float: right;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	height: 50px;
+	margin-right: 24px;
+	outline: none;
+	padding: 12px;
+	z-index: 1;
+}
+
+.searchBtnHome:hover {
+	background-color: #D0471D;
+	cursor: pointer;
+}
+
+.fa-search {
+	font-size: 24px;
+	padding-right: 12px;
+}
+
+.grayText {
+	color: #757575;
+	font-size: 16px;
+	margin: 40px;
+}
+
+/* results.blade.php */
+
 .leftSide {
 	width: 55%;
 	margin: 0;
@@ -52,33 +129,4 @@ body {
 	display: block !important;
 	height: 100%;
 	width: 100%;
-}
-
-.searchDiv {
-	height: 50px;
-	margin: 40px, 24px;
-	width: 522px;
-}
-
-.orangeAccent {
-	background-color: #FF5722;
-	height: 50px;
-	position: relative;
-	width: 4px;
-}
-
-.searchBarHome {
-	border: none;
-	height: 50px;
-	width: 522px;
-}
-
-.searchBarHome::placeholder {
-	color: #CCCCCC;
-	font-size: 20px;
-}
-
-.searchBarHome[type="text"] {
-	color: #000000;
-	font-size: 20px;
 }
