@@ -48,7 +48,7 @@
             @endif
 
             <br><br><br><br>
-            You are logged out!  This is welcome.blade.php showing.
+            This is welcome.blade.php showing.
 
         </div>
     </body>
