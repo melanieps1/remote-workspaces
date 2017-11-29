@@ -110,18 +110,24 @@ window.Vue = __webpack_require__(3);
 var app = new Vue({
 				el: '#app',
 
+				data: {
+
+								location: ''
+
+				},
+
 				methods: {
 								geocode: function geocode(e) {
 												e.preventDefault();
 
-												var location = document.getElementById('location-input').value;
-
 												axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
 																params: {
-																				address: location,
+																				address: this.location,
 																				key: 'AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw'
 																}
 												}).then(function (response) {
+
+																console.log(response);
 
 																// console.log formatted address, lat and long
 																var formattedAddress = response.data.results[0].formatted_address;
@@ -143,6 +149,8 @@ var app = new Vue({
 												}).catch(function (error) {
 																console.log(error);
 												});
+
+												this.location = '';
 								}
 				}
 });

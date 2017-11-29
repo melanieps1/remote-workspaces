@@ -14,7 +14,7 @@
                 <form method="POST" action="/results" id="location-form">
                     <div class="searchDiv">
                         <div class="orangeAccent"></div>
-                        <input class="searchBarHome" id="location-input" type="text" placeholder="Enter a location (city or zip code)">
+                        <input class="searchBarHome" type="text" placeholder="Enter a location (city or zip code)" v-model="location">
                     </div>
                 	<input name="_method" type="hidden" value="POST">
                 	{{ csrf_field() }}
