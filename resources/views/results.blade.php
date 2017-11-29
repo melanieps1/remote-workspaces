@@ -8,19 +8,32 @@
         </div>
     @endif
 
+  <div class="smallSearch">
+    <form method="POST" action="/results" id="location-form">
+        <div class="searchDiv">
+            <div class="orangeAccentSm"></div>
+            <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" v-model="location">
+        </div>
+      <input name="_method" type="hidden" value="POST">
+      {{ csrf_field() }}
+    <button type="submit" name="button" value="search" class="searchBtnSm">
+      <i class="fa fa-search searchIconSm" aria-hidden="true"></i>
+      Modify Search
+    </button>
+    </form>
+</div>
+
   <div class="leftSide">
     <br><br><br><br>
-    This is results.blade.php showing.  After clicking "Search" on home.blade, the site will redirect to this page and show the results and a map.
+    This is results.blade.php showing.
+    <br><br>
+    Workspaces in database:
 
     <ul>
     @foreach ($workspaces as $workspace)
     	<li>{{ $workspace->name }}, {{ $workspace->address }}</li>
     @endforeach
   	</ul>
-
-    <br><br>
-    <p>Location from search:</p>
-    <p></p>
   </div>
 
   <div class="mapContainer">
@@ -31,6 +44,7 @@
 
     function initMap() {
       var searchedArea = {lat: 38.0406, lng: -84.5037};
+
       var map = new google.maps.Map(document.getElementById('map'), {
         center: searchedArea,
         zoom: 14

@@ -19,7 +19,7 @@
                 	<input name="_method" type="hidden" value="POST">
                 	{{ csrf_field() }}
     			    <button type="submit" name="button" value="search" class="searchBtnHome" v-on:click="geocode">
-                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <i class="fa fa-search searchIconHome" aria-hidden="true"></i>
     			    	Search
     			    </button>
               	</form>

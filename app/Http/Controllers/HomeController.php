@@ -22,9 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function search()
     {
-        //
+        // capture what the user is searching (it shows up in the console right now)
 
     }
 

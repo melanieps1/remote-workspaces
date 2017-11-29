@@ -137,6 +137,7 @@ h2 {
 
 .searchBarHome::placeholder {
 	color: #CCCCCC;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 20px;
 }
 
@@ -169,7 +170,7 @@ h2 {
 	cursor: pointer;
 }
 
-.fa-search {
+.searchIconHome {
 	font-size: 24px;
 	padding-right: 12px;
 }
@@ -196,7 +197,7 @@ h2 {
 /* TODO: Fix map so the height is the same height as the screen, not 800px all of the time */
 
 .mapContainer {
-	height: 800px;
+	height: 600px;
 	float: right;
 	margin: 74px 24px 24px;
 	width: 40%;
@@ -224,4 +225,73 @@ h2 {
     width: 90%;
   }
 
+}
+
+.smallSearch {
+	height: 30px;
+}
+
+.orangeAccentSm {
+	background-color: #FF5722;
+	height: 30px;
+	margin-left: 24px;
+	margin-top: 74px;
+	position: absolute;
+	width: 4px;
+	z-index: 1;
+}
+
+.searchBarSm {
+	border: none;
+	box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+	float: left;
+	height: 30px;
+	margin-left: 24px;
+	margin-right: 4px;
+	margin-top: 74px;
+	padding: 0;
+	vertical-align: top;
+	width: 85%;
+}
+
+.searchBarSm::placeholder {
+	color: #CCCCCC;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+}
+
+.searchBarSm[type="text"] {
+	color: #000000;
+	font-size: 12px;
+	padding-left: 16px;
+}
+
+.searchBtnSm {
+	background-color: #FF5722;
+	border: none;
+	border-radius: 0;
+	box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+	color: white;
+	display: inline;
+	float: right;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	height: 30px;
+	margin-right: 24px;
+	margin-top: 74px;
+	outline: none;
+	padding-right: 12px;
+	padding-top: 3px;
+	vertical-align: top;
+	z-index: 1;
+}
+
+.searchBtnSm:hover {
+	background-color: #D0471D;
+	cursor: pointer;
+}
+
+.searchIconSm {
+	padding-right: 4px;
 }
