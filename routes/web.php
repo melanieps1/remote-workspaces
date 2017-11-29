@@ -8,4 +8,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@home')->name('home');
 
-Route::post('/results', 'WorkspaceController@index')->name('results');
+// Route::post('/workspaces/results', 'WorkspaceController@index')->name('results');
+// Delete above route once I'm sure I've replaced all references to it!
+
+Route::post('/workspaces/search', 'WorkspaceController@search');
+
+Route::resource('/workspaces', 'WorkspaceController');

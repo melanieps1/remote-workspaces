@@ -188,10 +188,11 @@ h2 {
 /* results.blade.php */
 
 .leftSide {
-	width: 55%;
-	margin: 0;
-	padding: 0;
 	float: left;
+	margin-left: 24px;
+	margin-top: 24px;
+	padding: 0;
+	width: 50%;
 }
 
 /* TODO: Fix map so the height is the same height as the screen, not 800px all of the time */
@@ -199,7 +200,7 @@ h2 {
 .mapContainer {
 	height: 600px;
 	float: right;
-	margin: 74px 24px 24px;
+	margin: 24px;
 	width: 40%;
 	z-index: 1;
 }
@@ -240,6 +241,8 @@ h2 {
 	width: 4px;
 	z-index: 1;
 }
+
+/* TODO: Make search bar and button combo responsive */
 
 .searchBarSm {
 	border: none;

@@ -11,10 +11,10 @@
 	<div class="floatingForm">
 		<h2>Find workspaces in your city</h2>
             <div>
-                <form method="POST" action="/results" id="location-form">
+                <form method="POST" action="/workspaces/search" id="location-form">
                     <div class="searchDiv">
                         <div class="orangeAccent"></div>
-                        <input class="searchBarHome" type="text" placeholder="Enter a location (city or zip code)" v-model="location">
+                        <input class="searchBarHome" type="text" placeholder="Enter a location (city or zip code)" v-model="location" name="location-search-bar">
                     </div>
                 	<input name="_method" type="hidden" value="POST">
                 	{{ csrf_field() }}

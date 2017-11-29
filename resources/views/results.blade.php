@@ -9,7 +9,7 @@
     @endif
 
   <div class="smallSearch">
-    <form method="POST" action="/results" id="location-form">
+    <form method="POST" action="/workspaces/results" id="location-form">
         <div class="searchDiv">
             <div class="orangeAccentSm"></div>
             <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" v-model="location">
@@ -21,10 +21,9 @@
       Modify Search
     </button>
     </form>
-</div>
+  </div>
 
   <div class="leftSide">
-    <br><br><br><br>
     This is results.blade.php showing.
     <br><br>
     Workspaces in database:

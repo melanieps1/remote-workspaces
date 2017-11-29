@@ -15,9 +15,45 @@ class WorkspaceController extends Controller
      */
     public function index()
     {
-        // $workspaces = \App\Workspace::all(); (this is the same thing, just without the DB facade)
-        $workspaces = DB::table('workspaces')->get();
+        //
+    }
 
+    public function search(Request $request)
+    {
+
+        // dd($request->input('location-search-bar'));
+
+        $string = $request;
+
+        $string = str_replace (" ", "+", urlencode($string));
+        $details_url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . $string . "&sensor=false";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $details_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $response = json_decode(curl_exec($ch), true);
+
+        // If Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST
+        if ($response['status'] != 'OK') {
+            return null;
+        }
+
+        print_r($response);
+        $geoloc = $response['results'][0];
+
+        $formattedAddress = $geoloc['formatted_address'];
+        $lat = $geoloc['geometry']['location']['lat'];
+        $long = $geoloc['geometry']['location']['lng'];
+
+        return $formattedAddress;
+        return $lat;
+        return $long;
+
+
+
+
+        // other stuff to worry about later
+        $workspaces = DB::table('workspaces')->get();
         return view('/results', compact('workspaces'));
     }
 
