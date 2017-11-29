@@ -17,6 +17,10 @@
     	<li>{{ $workspace->name }}, {{ $workspace->address }}</li>
     @endforeach
   	</ul>
+
+    <br><br>
+    <p>Location from search:</p>
+    <p></p>
   </div>
 
   <div class="mapContainer">

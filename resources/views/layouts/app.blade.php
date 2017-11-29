@@ -15,6 +15,9 @@
 
     <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/e81701c933.js"></script>
+
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div id="app">

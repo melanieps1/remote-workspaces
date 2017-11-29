@@ -15,6 +15,9 @@
     
     <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/e81701c933.js"></script>
+
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -53,6 +56,5 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw&callback=initMap"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw&libraries=places"></script>
 </body>
 </html>
