@@ -119,6 +119,7 @@ body {
 	float: right;
 	margin: 74px 24px 24px;
 	width: 40%;
+<<<<<<< HEAD
 	z-index: 1;
 }
 
@@ -126,4 +127,35 @@ body {
 	display: block !important;
 	height: 100%;
 	width: 100%;
+=======
+}
+
+.searchDiv {
+	height: 50px;
+	margin: 40px, 24px;
+	width: 522px;
+}
+
+.orangeAccent {
+	background-color: #FF5722;
+	height: 50px;
+	position: relative;
+	width: 4px;
+}
+
+.searchBarHome {
+	border: none;
+	height: 50px;
+	width: 522px;
+}
+
+.searchBarHome::placeholder {
+	color: #CCCCCC;
+	font-size: 20px;
+}
+
+.searchBarHome[type="text"] {
+	color: #000000;
+	font-size: 20px;
+>>>>>>> master
 }
