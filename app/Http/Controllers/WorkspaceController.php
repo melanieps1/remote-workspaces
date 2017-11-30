@@ -21,9 +21,11 @@ class WorkspaceController extends Controller
     public function search(Request $request)
     {
 
+        // code that grabs the user's input in the search bar, runs it through the Google Geocode API and passes it to the next view
+
         // dd($request->input('location-search-bar'));
 
-        $string = $request;
+        $string = $request->input('location-search-bar');
 
         $string = str_replace (" ", "+", urlencode($string));
         $details_url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . $string . "&sensor=false";
@@ -38,23 +40,22 @@ class WorkspaceController extends Controller
             return null;
         }
 
-        print_r($response);
+        // print_r($response);
         $geoloc = $response['results'][0];
 
         $formattedAddress = $geoloc['formatted_address'];
         $lat = $geoloc['geometry']['location']['lat'];
         $long = $geoloc['geometry']['location']['lng'];
+        $city = $geoloc['address_components'][0]['long_name'];
 
-        return $formattedAddress;
-        return $lat;
-        return $long;
+        return "city: " . $city . "\n" . "formatted address: " . $formattedAddress . "\n" . "lat: " . $lat . "\n" . "long: " . $long;
 
 
 
 
         // other stuff to worry about later
         $workspaces = DB::table('workspaces')->get();
-        return view('/results', compact('workspaces'));
+        return view('/workspaces/search', compact('workspaces', 'formattedAddress', 'lat', 'long', 'city'));
     }
 
     /**
