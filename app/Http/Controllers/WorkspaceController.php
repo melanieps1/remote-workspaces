@@ -39,16 +39,18 @@ class WorkspaceController extends Controller
         }
 
         // print_r($response);
-        $geoloc = $response['results'][0];
+        $geoloc = $response['results'][0]['geometry'];
 
-        $city = $geoloc['address_components'][0]['long_name'];
-        $formattedAddress = $geoloc['formatted_address'];
-        $lat = $geoloc['geometry']['location']['lat'];
-        $lng = $geoloc['geometry']['location']['lng'];
-        $neLatViewport = $geoloc['geometry']['viewport']['northeast']['lat'];
-        $neLngViewport = $geoloc['geometry']['viewport']['northeast']['lng'];
-        $swLatViewport = $geoloc['geometry']['viewport']['southwest']['lat'];
-        $swLngViewport = $geoloc['geometry']['viewport']['southwest']['lng'];
+        $city = $response['results'][0]['address_components'][0]['long_name'];
+        $formattedAddress = $response['results'][0]['formatted_address'];
+        $lat = $geoloc['location']['lat'];
+        $lng = $geoloc['location']['lng'];
+        $neLatViewport = $geoloc['viewport']['northeast']['lat'];
+        $neLngViewport = $geoloc['viewport']['northeast']['lng'];
+        $swLatViewport = $geoloc['viewport']['southwest']['lat'];
+        $swLngViewport = $geoloc['viewport']['southwest']['lng'];
+
+        // Results being pulled in from database
 
         $workspaces = DB::table('workspaces')->where([
                                             ['latitude', '>', $swLatViewport],
@@ -56,6 +58,7 @@ class WorkspaceController extends Controller
                                             ['longitude', '>', $swLngViewport],
                                             ['longitude', '<', $neLngViewport],
                                             ])->get();
+        
         return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
     }
 
