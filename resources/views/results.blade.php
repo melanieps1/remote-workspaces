@@ -13,27 +13,35 @@
     <form method="POST" action="/workspaces/results" id="location-form">
         <div class="searchDiv">
             <div class="orangeAccentSm"></div>
-            <input class="searchBarSm" type="text" placeholder="Showing results for {{ $formattedAddress }}" value="{{ $formattedAddress }}" v-model="location">
+            <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" value="{{ $formattedAddress }}" name="location-search-bar">
         </div>
       <input name="_method" type="hidden" value="POST">
       {{ csrf_field() }}
-    <button type="submit" name="button" value="search" class="searchBtnSm">
-      <i class="fa fa-search searchIconSm" aria-hidden="true"></i>
-      Modify Search
-    </button>
+      <button type="submit" name="button" value="search" class="searchBtnSm">
+        <i class="fa fa-search searchIconSm" aria-hidden="true"></i>
+        Modify Search
+      </button>
     </form>
   </div>
 
   <div class="leftSide">
-    This is results.blade.php showing.
-    <br><br>
-    Workspaces in database:
+    <div class="results-container">
 
-    <ul>
     @foreach ($workspaces as $workspace)
-    	<li>{{ $workspace->name }}, {{ $workspace->address }}</li>
+    	
+      <div class="results-card">
+        <h3>{{ $workspace->name }}</h3>
+        <h5>{{ $categories[7]->name }}</h5>
+        <div class="results-card-desc-container">
+          <div class="rating-sm"></div>
+          <p class="results-card-desc">35 total reviews</p>
+        </div>
+      </div>
+
     @endforeach
-  	</ul>
+
+    </div>
+
   </div>
 
   <div class="mapContainer">

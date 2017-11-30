@@ -2,10 +2,14 @@
 
 window.Vue = require('vue');
 
-// Vue.component('example', require('./components/Example.vue'));
+Vue.component('resultsCard', require('./components/resultsCard.vue'));
 
 const app = new Vue({
     
-    el: '#app'
+    el: '#app',
+
+    components: {
+    	'results-card': resultsCard
+    }
     
 });

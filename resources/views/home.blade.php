@@ -14,11 +14,11 @@
                 <form method="POST" action="/workspaces/search" id="location-form">
                     <div class="searchDiv">
                         <div class="orangeAccent"></div>
-                        <input class="searchBarHome" type="text" placeholder="Enter a location (city or zip code)" v-model="location" name="location-search-bar">
+                        <input class="searchBarHome" type="text" placeholder="Enter a location (city or zip code)" name="location-search-bar">
                     </div>
                 	<input name="_method" type="hidden" value="POST">
                 	{{ csrf_field() }}
-    			    <button type="submit" name="button" value="search" class="searchBtnHome" v-on:click="geocode">
+    			    <button type="submit" name="button" value="search" class="searchBtnHome">
                         <i class="fa fa-search searchIconHome" aria-hidden="true"></i>
     			    	Search
     			    </button>

@@ -58,8 +58,12 @@ class WorkspaceController extends Controller
                                             ['longitude', '>', $swLngViewport],
                                             ['longitude', '<', $neLngViewport],
                                             ])->get();
+
+        $categories = DB::Select("SELECT workspaces.name, categories.name FROM workspaces INNER JOIN categories ON workspaces.category_id = categories.id;");
+
+        // dd($categories[0]->name);
         
-        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
+        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport', 'categories'));
     }
 
     /**

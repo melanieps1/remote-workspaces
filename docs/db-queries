@@ -1,0 +1,6 @@
+-- SELECT * FROM workspaces WHERE latitude BETWEEN $swLatViewport AND $neLatViewport AND longitude BETWEEN $swLngViewport AND $neLngViewport;
+SELECT * FROM workspaces WHERE latitude BETWEEN 37.8452559 AND 38.211404 AND longitude BETWEEN -84.6604151 AND -84.282715;
+
+SELECT workspaces.name, categories.name
+FROM workspaces
+INNER JOIN categories ON workspaces.category_id = categories.id;

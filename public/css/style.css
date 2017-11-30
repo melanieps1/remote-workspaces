@@ -116,8 +116,6 @@ h2 {
 
 .leftSide {
 	float: left;
-	margin-left: 24px;
-	margin-top: 24px;
 	padding: 0;
 	width: 50%;
 }
@@ -224,4 +222,60 @@ h2 {
 
 .searchIconSm {
 	padding-right: 4px;
+}
+
+.results-container {
+	border: 1px solid #757575;
+	height: 575px;
+	margin: 24px;
+	overflow: scroll;
+	padding: 12px;
+	width: 100%;
+}
+
+.results-card {
+	border: 1px solid #cccccc;
+	float: left;
+	height: 120px;
+	margin: 12px;
+	padding: 12px;
+	width: 300px;
+}
+
+.results-card:hover {
+	box-shadow: 0px 1px 5px 0 rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	margin: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+h5 {
+	color: #757575;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	margin: 0;
+	margin-top: 4px;
+	text-transform: uppercase;
+}
+
+.results-card-desc-container {
+	display: flex;
+  height: 75%;
+}
+
+.results-card-desc {
+	color: #757575;
+	float: right;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	display: inline-block;
+  align-self: flex-end;
 }
