@@ -52,18 +52,31 @@ class WorkspaceController extends Controller
 
         // Results being pulled in from database
 
-        $workspaces = DB::table('workspaces')->where([
-                                            ['latitude', '>', $swLatViewport],
-                                            ['latitude', '<', $neLatViewport],
-                                            ['longitude', '>', $swLngViewport],
-                                            ['longitude', '<', $neLngViewport],
-                                            ])->get();
+        // uses query builder
+        // $workspaces = DB::table('workspaces')->where([
+        //                                     ['latitude', '>', $swLatViewport],
+        //                                     ['latitude', '<', $neLatViewport],
+        //                                     ['longitude', '>', $swLngViewport],
+        //                                     ['longitude', '<', $neLngViewport],
+        //                                     ])
+        //                                     ->get();
 
-        $categories = DB::Select("SELECT workspaces.name, categories.name FROM workspaces INNER JOIN categories ON workspaces.category_id = categories.id;");
+        // uses model
+        $workspaces = \App\Workspace::where([
+                                        ['latitude', '>', $swLatViewport],
+                                        ['latitude', '<', $neLatViewport],
+                                        ['longitude', '>', $swLngViewport],
+                                        ['longitude', '<', $neLngViewport],
+                                        ])
+                                        ->get();
+
+        // dd($workspaces[2]->category);
+
+        // $categories = DB::Select("SELECT workspaces.name, categories.name FROM workspaces INNER JOIN categories ON workspaces.category_id = categories.id;");
 
         // dd($categories[0]->name);
         
-        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport', 'categories'));
+        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
     }
 
     /**
@@ -95,7 +108,7 @@ class WorkspaceController extends Controller
      */
     public function show($id)
     {
-        //
+        // individual page
     }
 
     /**
