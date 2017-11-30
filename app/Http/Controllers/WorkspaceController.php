@@ -21,9 +21,7 @@ class WorkspaceController extends Controller
     public function search(Request $request)
     {
 
-        // This is code that grabs the search bar input, calls Google Geocode API and passes certain parts of it to the next view
-
-        // dd($request->input('location-search-bar'));
+        // This code geocodes the search bar input and passes it to the results page
 
         $string = $request->input('location-search-bar');
 
@@ -35,9 +33,9 @@ class WorkspaceController extends Controller
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $response = json_decode(curl_exec($ch), true);
 
-        // If Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST
+        // Error state (if Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST)
         if ($response['status'] != 'OK') {
-            return null;
+            return 'Invalid request';
         }
 
         // print_r($response);
@@ -47,11 +45,18 @@ class WorkspaceController extends Controller
         $formattedAddress = $geoloc['formatted_address'];
         $lat = $geoloc['geometry']['location']['lat'];
         $lng = $geoloc['geometry']['location']['lng'];
+        $neLatViewport = $geoloc['geometry']['viewport']['northeast']['lat'];
+        $neLngViewport = $geoloc['geometry']['viewport']['northeast']['lng'];
+        $swLatViewport = $geoloc['geometry']['viewport']['southwest']['lat'];
+        $swLngViewport = $geoloc['geometry']['viewport']['southwest']['lng'];
 
-        // return "city: " . $city . "\n" . "formatted address: " . $formattedAddress . "\n" . "lat: " . $lat . "\n" . "lng: " . $lng;
-
-        $workspaces = DB::table('workspaces')->get();
-        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng'));
+        $workspaces = DB::table('workspaces')->where([
+                                            ['latitude', '>', $swLatViewport],
+                                            ['latitude', '<', $neLatViewport],
+                                            ['longitude', '>', $swLngViewport],
+                                            ['longitude', '<', $neLngViewport],
+                                            ])->get();
+        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
     }
 
     /**

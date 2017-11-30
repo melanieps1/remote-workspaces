@@ -43,7 +43,6 @@
   <script>
 
     function initMap() {
-      // var searchedArea = {lat: 38.0406, lng: -84.5037};
       var lat = <?php echo $lat ?>;
       var lng = <?php echo $lng ?>;
       var searchedArea = {lat, lng};
@@ -54,17 +53,7 @@
       });
 
       // add a marker
-      var markers = [
-        {
-          coordinates: {lat: 38.04216,lng: -84.4925379999999}
-        },
-        {
-          coordinates: {lat: 38.059781,lng: -84.491893}
-        },
-        {
-          coordinates: {lat: 38.032872,lng: -84.5017179999999}
-        }
-      ];
+      var markers = [];
 
       // loop through markers
       for (var i = 0; i < markers.length; i++) {
