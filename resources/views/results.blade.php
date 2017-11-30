@@ -8,11 +8,12 @@
         </div>
     @endif
 
+
   <div class="smallSearch">
     <form method="POST" action="/workspaces/results" id="location-form">
         <div class="searchDiv">
             <div class="orangeAccentSm"></div>
-            <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" value="{{ $formattedAddress }}" v-model="location">
+            <input class="searchBarSm" type="text" placeholder="Showing results for {{ $formattedAddress }}" value="{{ $formattedAddress }}" v-model="location">
         </div>
       <input name="_method" type="hidden" value="POST">
       {{ csrf_field() }}
@@ -43,7 +44,9 @@
 
     function initMap() {
       // var searchedArea = {lat: 38.0406, lng: -84.5037};
-      var searchedArea = "<?php echo $lat,$lng ?>";
+      var lat = <?php echo $lat ?>;
+      var lng = <?php echo $lng ?>;
+      var searchedArea = {lat, lng};
 
       var map = new google.maps.Map(document.getElementById('map'), {
         center: searchedArea,
