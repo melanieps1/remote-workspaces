@@ -12,7 +12,7 @@
     <form method="POST" action="/workspaces/results" id="location-form">
         <div class="searchDiv">
             <div class="orangeAccentSm"></div>
-            <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" v-model="location">
+            <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" value="{{ $formattedAddress }}" v-model="location">
         </div>
       <input name="_method" type="hidden" value="POST">
       {{ csrf_field() }}
@@ -42,7 +42,8 @@
   <script>
 
     function initMap() {
-      var searchedArea = {lat: 38.0406, lng: -84.5037};
+      // var searchedArea = {lat: 38.0406, lng: -84.5037};
+      var searchedArea = "<?php echo $lat,$lng ?>";
 
       var map = new google.maps.Map(document.getElementById('map'), {
         center: searchedArea,

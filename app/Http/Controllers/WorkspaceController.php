@@ -21,7 +21,7 @@ class WorkspaceController extends Controller
     public function search(Request $request)
     {
 
-        // code that grabs the user's input in the search bar, runs it through the Google Geocode API and passes it to the next view
+        // This is code that grabs the search bar input, calls Google Geocode API and passes certain parts of it to the next view
 
         // dd($request->input('location-search-bar'));
 
@@ -43,19 +43,15 @@ class WorkspaceController extends Controller
         // print_r($response);
         $geoloc = $response['results'][0];
 
+        $city = $geoloc['address_components'][0]['long_name'];
         $formattedAddress = $geoloc['formatted_address'];
         $lat = $geoloc['geometry']['location']['lat'];
-        $long = $geoloc['geometry']['location']['lng'];
-        $city = $geoloc['address_components'][0]['long_name'];
+        $lng = $geoloc['geometry']['location']['lng'];
 
-        return "city: " . $city . "\n" . "formatted address: " . $formattedAddress . "\n" . "lat: " . $lat . "\n" . "long: " . $long;
+        // return "city: " . $city . "\n" . "formatted address: " . $formattedAddress . "\n" . "lat: " . $lat . "\n" . "lng: " . $lng;
 
-
-
-
-        // other stuff to worry about later
         $workspaces = DB::table('workspaces')->get();
-        return view('/workspaces/search', compact('workspaces', 'formattedAddress', 'lat', 'long', 'city'));
+        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng'));
     }
 
     /**
