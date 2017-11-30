@@ -225,7 +225,8 @@ h2 {
 }
 
 .results-container {
-	border: 1px solid #757575;
+	background-color: #f3f6f7;
+	/*border: 1px solid #cccccc;*/
 	height: 575px;
 	margin: 24px;
 	overflow: scroll;
@@ -234,6 +235,7 @@ h2 {
 }
 
 .results-card {
+	background-color: white;
 	border: 1px solid #cccccc;
 	float: left;
 	height: 120px;
@@ -268,14 +270,31 @@ h5 {
 
 .results-card-desc-container {
 	display: flex;
-  height: 75%;
+  height: 60%;
 }
 
 .results-card-desc {
+	align-self: flex-end;
 	color: #757575;
+	display: inline-block;
 	float: right;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
+  margin-left: 12px;
+}
+
+.rating-sm {
+	align-self: flex-end;
+	background-color: #FF5722;
 	display: inline-block;
-  align-self: flex-end;
+	height: 30px;
+}
+
+.ratings-text {
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	margin: 0;
+	padding: 4px 12px;
 }

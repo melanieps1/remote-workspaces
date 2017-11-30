@@ -33,7 +33,9 @@
         <h3>{{ $workspace->name }}</h3>
         <h5>{{ $workspace->category->name }}</h5>
         <div class="results-card-desc-container">
-          <div class="rating-sm"></div>
+          <div class="rating-sm">
+            <p class="ratings-text">9.0</p>
+          </div>
           <p class="results-card-desc">35 total reviews</p>
         </div>
       </div>
