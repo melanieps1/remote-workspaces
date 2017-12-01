@@ -49,7 +49,7 @@
 				<p>
 					{{ $rating->review }}
 					<br><br>
-					{{ $rating->user->username }} • {{ $rating->updated_at->format('F Y') }} • {{ $spaceRatingByUser }}
+					{{ $rating->user->username }} • {{ $rating->updated_at->format('F Y') }} • {{ $rating->average }}
 				</p>
 			</li>
 		@endforeach

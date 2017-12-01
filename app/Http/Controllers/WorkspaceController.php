@@ -109,10 +109,10 @@ class WorkspaceController extends Controller
                 + $rating->seating_rating
                 + $rating->hours_rating;
         
-            $spaceRatingByUser = round($sum/6, 1);
+            $rating->average = round($sum/6, 1);
         }
 
-        return view('workspace', compact('workspace', 'ratings', 'spaceRatingByUser'));
+        return view('workspace', compact('workspace', 'ratings'));
     }
 
     /**
