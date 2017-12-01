@@ -45,8 +45,13 @@
 		<ul>
 			
 		@foreach ($ratings as $rating)
-			<li>{{ $rating->review }}</li>
-			<li>{{ $rating->user->username }} • {{ $rating->updated_at }}</li>
+			<li>
+				<p>
+					{{ $rating->review }}
+					<br><br>
+					{{ $rating->user->username }} • {{ $rating->updated_at->format('F Y') }} • {{ $spaceRatingByUser }}
+				</p>
+			</li>
 		@endforeach
 
 		</ul>

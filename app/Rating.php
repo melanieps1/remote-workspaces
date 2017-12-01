@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-  public function category() {
+  public function workspace() {
 
 		return $this->belongsTo('\App\Workspace');
 
@@ -17,4 +17,5 @@ class Rating extends Model
 		return $this->belongsTo('\App\User');
 
 	}
+	
 }

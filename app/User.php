@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function category() {
+    public function rating() {
 
     return $this->hasMany('\App\Rating');
 

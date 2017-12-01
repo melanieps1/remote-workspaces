@@ -99,7 +99,20 @@ class WorkspaceController extends Controller
 
         $ratings = \App\Rating::where('workspace_id', '=', $workspace->id)->get();
 
-        return view('workspace', compact('workspace', 'ratings'));
+        foreach ($ratings as $rating) {
+            $sum = 0;
+
+            $sum += $rating->wifi_rating
+                + $rating->location_rating
+                + $rating->noise_rating
+                + $rating->outlets_rating
+                + $rating->seating_rating
+                + $rating->hours_rating;
+        
+            $spaceRatingByUser = round($sum/6, 1);
+        }
+
+        return view('workspace', compact('workspace', 'ratings', 'spaceRatingByUser'));
     }
 
     /**
