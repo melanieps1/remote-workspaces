@@ -95,7 +95,9 @@ class WorkspaceController extends Controller
      */
     public function show($id)
     {
-        // individual page
+        $workspace = \App\Workspace::find($id);
+
+        return view('workspace', compact('workspace'));
     }
 
     /**

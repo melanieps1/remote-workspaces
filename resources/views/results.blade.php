@@ -29,7 +29,7 @@
 
     @foreach ($workspaces as $workspace)
     	
-      <div class="results-card">
+      <div class="results-card" onclick="document.location='/workspaces/{{ $workspace->id }}'">
         <h3>{{ $workspace->name }}</h3>
         <h5>{{ $workspace->category->name }}</h5>
         <div class="results-card-desc-container">
