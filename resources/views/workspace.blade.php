@@ -41,6 +41,15 @@
 		<hr>
 
 		<h3>Reviews</h3>
+
+		<ul>
+			
+		@foreach ($ratings as $rating)
+			<li>{{ $rating->review }}</li>
+			<li>{{ $rating->user->username }} • {{ $rating->updated_at }}</li>
+		@endforeach
+
+		</ul>
 	</div>
 
 </div>

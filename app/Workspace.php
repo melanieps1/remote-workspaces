@@ -12,4 +12,10 @@ class Workspace extends Model
   	return $this->belongsTo('\App\Category');
 
   }
+
+  public function rating() {
+
+  	return $this->hasMany('\App\Rating');
+  
+  }
 }

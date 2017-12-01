@@ -97,7 +97,9 @@ class WorkspaceController extends Controller
     {
         $workspace = \App\Workspace::find($id);
 
-        return view('workspace', compact('workspace'));
+        $ratings = \App\Rating::where('workspace_id', '=', $workspace->id)->get();
+
+        return view('workspace', compact('workspace', 'ratings'));
     }
 
     /**
