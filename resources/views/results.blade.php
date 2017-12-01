@@ -59,34 +59,46 @@
 
       var map = new google.maps.Map(document.getElementById('map'), {
         center: searchedArea,
-        zoom: 14
+        zoom: 12
       });
 
-      // add a marker
-      var markers = [];
+      var image = "{{ asset('images/marker-orange.png') }}";
+        image.height = 23;
+        image.width = 41;
 
-      // loop through markers
-      for (var i = 0; i < markers.length; i++) {
-        addMarker(markers[i]);
-      }
+      <?php foreach($workspaces as $workspace){ ?>
 
-      // function
-      function addMarker(props) {
-        var marker = new google.maps.Marker({
-          position: props.coordinates,
-          map: map
-      });
-      }
+          var location_<?php echo $workspace['id']; ?> = new google.maps.LatLng(<?php echo $workspace['latitude']; ?>, <?php echo $workspace['longitude']; ?>);
+          
+          var marker_<?php echo $workspace['id']; ?> = new google.maps.Marker({
+              position: location_<?php echo $workspace['id']; ?>,
+              map: map,
+              icon: image
+          });
+          
+          map.setCenter(marker_<?php echo $workspace['id']; ?>.getPosition());
 
-      // tooltip for marker
-      // var infoWindow = new google.maps.InfoWindow({
-      //   content: '<p><strong>Awesome Inc</strong></p>'
-      // });
+          var infoWindow_<?php echo $workspace['id']; ?> = new google.maps.InfoWindow({
+            content: "<?php echo $workspace['name']; ?>"
+          });
 
-      // event listener for tooltip to show up on click
-      // marker.addListener('click', function() {
-      //   infoWindow.open(map, marker);
-      // });
+          marker_<?php echo $workspace['id']; ?>.addListener('click', function() {
+            infoWindow_<?php echo $workspace['id']; ?>.open(map, marker_<?php echo $workspace['id']; ?>);
+          });
+
+      <?php } ?>
+
+      // function closeInfos(){
+      //   if(infos.length > 0){     
+      //     // detach the info-window from the marker
+      //     infos[0].set("marker", null);
+      //     // close it
+      //     infos[0].close();
+      //     // set infos to 0
+      //     infos.length = 0;
+      //   }
+      // }
+      
     }
 
   </script>

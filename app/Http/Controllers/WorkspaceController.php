@@ -35,13 +35,15 @@ class WorkspaceController extends Controller
 
         // Error state (if Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST)
         if ($response['status'] != 'OK') {
-            return 'Invalid request';
+            // sleep(1);
+            // $response = json_decode(curl_exec($ch), true);
+            return 'Invalid request' . $response['status'];
+            // Google is rejecting request (over query limit), stretch goal: retry x times after sleeping for a second
         }
 
         // print_r($response);
         $geoloc = $response['results'][0]['geometry'];
 
-        $city = $response['results'][0]['address_components'][0]['long_name'];
         $formattedAddress = $response['results'][0]['formatted_address'];
         $lat = $geoloc['location']['lat'];
         $lng = $geoloc['location']['lng'];
@@ -50,18 +52,7 @@ class WorkspaceController extends Controller
         $swLatViewport = $geoloc['viewport']['southwest']['lat'];
         $swLngViewport = $geoloc['viewport']['southwest']['lng'];
 
-        // Results being pulled in from database
-
-        // uses query builder
-        // $workspaces = DB::table('workspaces')->where([
-        //                                     ['latitude', '>', $swLatViewport],
-        //                                     ['latitude', '<', $neLatViewport],
-        //                                     ['longitude', '>', $swLngViewport],
-        //                                     ['longitude', '<', $neLngViewport],
-        //                                     ])
-        //                                     ->get();
-
-        // uses model
+        // uses model to get workspaces within viewport coordinates
         $workspaces = \App\Workspace::where([
                                         ['latitude', '>', $swLatViewport],
                                         ['latitude', '<', $neLatViewport],
@@ -69,14 +60,10 @@ class WorkspaceController extends Controller
                                         ['longitude', '<', $neLngViewport],
                                         ])
                                         ->get();
-
-        // dd($workspaces[2]->category);
-
-        // $categories = DB::Select("SELECT workspaces.name, categories.name FROM workspaces INNER JOIN categories ON workspaces.category_id = categories.id;");
-
-        // dd($categories[0]->name);
         
-        return view('/results', compact('workspaces', 'city', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
+        curl_close($ch);
+
+        return view('/results', compact('workspaces', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
     }
 
     /**
