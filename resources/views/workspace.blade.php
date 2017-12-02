@@ -93,7 +93,13 @@
       <div class="rating-sm">
         <p class="ratings-text">Overall Rating: {{ $overallRating }}</p>
       </div>
-      <p>14 Total Reviews</p>
+      
+    @if ($ratingsCount === 1)
+      <p>{{ $ratingsCount }} Total Review</p>
+    @else
+      <p>{{ $ratingsCount }} Total Reviews</p>
+    @endif
+      
       <p>Wifi Speed: {{ $wifiRating }}</p>
       <p>Location: {{ $locationRating }}</p>
       <p>Noise Level: {{ $noiseRating }}</p>

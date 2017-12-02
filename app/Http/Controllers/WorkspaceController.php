@@ -124,6 +124,10 @@ class WorkspaceController extends Controller
 
         $overallRating = round($ratingSum / count($ratings), 1);
 
+        // number of reviews on workspace
+
+        $ratingsCount = count($ratings);
+
         // calculation for ratings of each amenity
 
         $wifiRatingSum = 0;
@@ -162,7 +166,7 @@ class WorkspaceController extends Controller
         }
         $hoursRating = round($hoursRatingSum / count($ratings), 1);
 
-        return view('workspace', compact('workspace', 'ratings', 'overallRating', 'wifiRating', 'locationRating', 'noiseRating', 'outletRating', 'seatRating', 'hoursRating'));
+        return view('workspace', compact('workspace', 'ratings', 'overallRating', 'ratingsCount', 'wifiRating', 'locationRating', 'noiseRating', 'outletRating', 'seatRating', 'hoursRating'));
     }
 
     /**
