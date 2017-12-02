@@ -99,6 +99,8 @@ class WorkspaceController extends Controller
 
         $ratings = \App\Rating::where('workspace_id', '=', $workspace->id)->get();
 
+        // calculation for user review ratings
+
         foreach ($ratings as $rating) {
             $sum = 0;
 
@@ -112,6 +114,8 @@ class WorkspaceController extends Controller
             $rating->average = round($sum/6, 1);
         }
 
+        // calculation for workspace rating
+
         $ratingSum = 0;
 
         foreach ($ratings as $rating) {
@@ -119,6 +123,10 @@ class WorkspaceController extends Controller
         }
 
         $overallRating = round($ratingSum / count($ratings), 1);
+
+        // calculation for ratings of each amenity
+
+        // TBD
 
         return view('workspace', compact('workspace', 'ratings', 'overallRating'));
     }

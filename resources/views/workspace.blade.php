@@ -57,5 +57,52 @@
 		</ul>
 	</div>
 
+  <div class="sidebar">
+    
+    <div class="mapContainerSm">
+      <div id="map"></div>
+    </div>
+
+    <script>    
+      function initMap() {
+        var center = {lat: <?php echo $workspace['latitude'] ?>, lng: <?php echo $workspace['longitude'] ?>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: center,
+          zoom: 15
+        });
+
+        var image = "{{ asset('images/marker-orange.png') }}";
+          image.height = 23;
+          image.width = 41;
+
+        var location = new google.maps.LatLng(<?php echo $workspace['latitude']; ?>, <?php echo $workspace['longitude']; ?>);
+        
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            icon: image
+        });
+        
+        map.setCenter(marker.getPosition());
+        
+      }
+    </script>
+
+    <div class="ratingSection">
+      <div class="rating-sm">
+        <p class="ratings-text">Overall Rating: {{ $overallRating }}</p>
+      </div>
+      <p>14 Total Reviews</p>
+      <p>Wifi Speed</p>
+      <p>Location</p>
+      <p>Noise Level</p>
+      <p>Outlet Access</p>
+      <p>Seating</p>
+      <p>Hours</p>
+      <button>Add a Review</button>
+    </div>
+  </div>
+
 </div>
 @endsection

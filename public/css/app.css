@@ -371,3 +371,17 @@ h5 {
 	font-size: 12px;
   margin-left: 12px;
 }
+.mapContainerSm {
+	background-color: #f3f6f7;
+	height: 300px;
+	float: right;
+	margin: 24px;
+	width: 300px;
+	z-index: 1;
+}
+
+#mapSm {
+	display: block !important;
+	height: 100%;
+	width: 100%;
+}
