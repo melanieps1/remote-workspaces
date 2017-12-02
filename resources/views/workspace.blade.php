@@ -94,12 +94,12 @@
         <p class="ratings-text">Overall Rating: {{ $overallRating }}</p>
       </div>
       <p>14 Total Reviews</p>
-      <p>Wifi Speed</p>
-      <p>Location</p>
-      <p>Noise Level</p>
-      <p>Outlet Access</p>
-      <p>Seating</p>
-      <p>Hours</p>
+      <p>Wifi Speed: {{ $wifiRating }}</p>
+      <p>Location: {{ $locationRating }}</p>
+      <p>Noise Level: {{ $noiseRating }}</p>
+      <p>Outlet Access: {{ $outletRating }}</p>
+      <p>Seating: {{ $seatRating }}</p>
+      <p>Hours: {{ $hoursRating }}</p>
       <button>Add a Review</button>
     </div>
   </div>

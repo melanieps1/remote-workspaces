@@ -126,9 +126,43 @@ class WorkspaceController extends Controller
 
         // calculation for ratings of each amenity
 
-        // TBD
+        $wifiRatingSum = 0;
+        foreach ($ratings as $rating) {
+            $wifiRatingSum += $rating->wifi_rating;
+        }
+        $wifiRating = round($wifiRatingSum / count($ratings), 1);
 
-        return view('workspace', compact('workspace', 'ratings', 'overallRating'));
+        $locationRatingSum = 0;
+        foreach ($ratings as $rating) {
+            $locationRatingSum += $rating->location_rating;
+        }
+        $locationRating = round($locationRatingSum / count($ratings), 1);
+
+        $noiseRatingSum = 0;
+        foreach ($ratings as $rating) {
+            $noiseRatingSum += $rating->noise_rating;
+        }
+        $noiseRating = round($noiseRatingSum / count($ratings), 1);
+
+        $outletRatingSum = 0;
+        foreach ($ratings as $rating) {
+            $outletRatingSum += $rating->outlets_rating;
+        }
+        $outletRating = round($outletRatingSum / count($ratings), 1);
+
+        $seatRatingSum = 0;
+        foreach ($ratings as $rating) {
+            $seatRatingSum += $rating->seating_rating;
+        }
+        $seatRating = round($seatRatingSum / count($ratings), 1);
+
+        $hoursRatingSum = 0;
+        foreach ($ratings as $rating) {
+            $hoursRatingSum += $rating->hours_rating;
+        }
+        $hoursRating = round($hoursRatingSum / count($ratings), 1);
+
+        return view('workspace', compact('workspace', 'ratings', 'overallRating', 'wifiRating', 'locationRating', 'noiseRating', 'outletRating', 'seatRating', 'hoursRating'));
     }
 
     /**
