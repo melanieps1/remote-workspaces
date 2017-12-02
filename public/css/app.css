@@ -88,6 +88,41 @@ h2 {
 	margin: 40px auto;
 }
 
+h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	margin: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+h5 {
+	color: #757575;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	margin: 0;
+	margin-top: 4px;
+	text-transform: uppercase;
+}
+
+.rating-sm {
+	align-self: flex-end;
+	background-color: #FF5722;
+	display: inline-block;
+	height: 30px;
+}
+
+.ratings-text {
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	margin: 0;
+	padding: 4px 12px;
+}
+
 /* home.blade.php */
 
 .homeBlade {
@@ -185,7 +220,6 @@ h2 {
 	margin-top: 40px;
 }
 
-/* results.blade.php */
 
 .leftSide {
 	float: left;
@@ -193,7 +227,7 @@ h2 {
 	width: 50%;
 }
 
-/* TODO: Fix map so the height is the same height as the screen, not 800px all of the time */
+/* TODO: Fix map so the height is the same height as the screen, not 600px all of the time */
 
 .mapContainer {
 	height: 600px;
@@ -323,25 +357,6 @@ h2 {
 	cursor: pointer;
 }
 
-h3 {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 20px;
-	font-weight: 600;
-	margin: 0;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-h5 {
-	color: #757575;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12px;
-	font-weight: 600;
-	margin: 0;
-	margin-top: 4px;
-	text-transform: uppercase;
-}
-
 .results-card-desc-container {
 	display: flex;
   height: 60%;
@@ -355,20 +370,4 @@ h5 {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
   margin-left: 12px;
-}
-
-.rating-sm {
-	align-self: flex-end;
-	background-color: #FF5722;
-	display: inline-block;
-	height: 30px;
-}
-
-.ratings-text {
-	color: white;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 16px;
-	font-weight: 700;
-	margin: 0;
-	padding: 4px 12px;
 }

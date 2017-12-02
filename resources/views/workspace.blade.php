@@ -27,7 +27,7 @@
   	<div>
   		<h2>{{ $workspace->name }}</h2>
   		<div class="rating-sm">
-        <p class="ratings-text">9.0</p>
+        <p class="ratings-text">{{ $overallRating }}</p>
       </div>
     </div>
   	<h5>{{ $workspace->category->name }}</h5>

@@ -112,7 +112,15 @@ class WorkspaceController extends Controller
             $rating->average = round($sum/6, 1);
         }
 
-        return view('workspace', compact('workspace', 'ratings'));
+        $ratingSum = 0;
+
+        foreach ($ratings as $rating) {
+            $ratingSum += $rating->average;
+        }
+
+        $overallRating = round($ratingSum / count($ratings), 1);
+
+        return view('workspace', compact('workspace', 'ratings', 'overallRating'));
     }
 
     /**
