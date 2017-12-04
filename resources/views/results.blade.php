@@ -27,20 +27,32 @@
   <div class="leftSide">
     <div class="results-container">
 
-    @foreach ($workspaces as $workspace)
-    	
-      <div class="results-card" onclick="document.location='/workspaces/{{ $workspace->id }}'">
-        <h3>{{ $workspace->name }}</h3>
-        <h5>{{ $workspace->category->name }}</h5>
-        <div class="results-card-desc-container">
-          <div class="rating-sm">
-            <p class="ratings-text">9.0</p>
+    @if (count($workspaces) > 0)
+
+      @foreach ($workspaces as $workspace)
+      	
+        <div class="results-card" onclick="document.location='/workspaces/{{ $workspace->id }}'">
+          <h3>{{ $workspace->name }}</h3>
+          <h5>{{ $workspace->category->name }}</h5>
+          <div class="results-card-desc-container">
+            <div class="rating-sm">
+              <p class="ratings-text">9.0</p>
+            </div>
+            <p class="results-card-desc">35 total reviews</p>
           </div>
-          <p class="results-card-desc">35 total reviews</p>
         </div>
+
+      @endforeach
+
+    @else
+      <div class="zeroState">
+        <p class="zeroStateText">No workspaces in {{ $formattedAddress }} yet!</p>
+        <p class="zeroStateSubText">Would you like to add one?</p>
+        <br>
+        <a href="#" class="primary-btn-inline">Add a Workspace</a>
       </div>
 
-    @endforeach
+    @endif
 
     </div>
 
