@@ -21,7 +21,7 @@
 
                             @if ($errors->has('name'))
                                 <span>
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <br><strong>{{ $errors->first('name') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -34,7 +34,7 @@
 
                             @if ($errors->has('email'))
                                 <span>
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <br><strong>{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -47,7 +47,7 @@
 
                             @if ($errors->has('username'))
                                 <span>
-                                    <strong>{{ $errors->first('username') }}</strong>
+                                    <br><strong>{{ $errors->first('username') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -60,7 +60,7 @@
 
                             @if ($errors->has('password'))
                                 <span>
-                                    <strong>{{ $errors->first('password') }}</strong>
+                                    <br><strong>{{ $errors->first('password') }}</strong>
                                 </span>
                             @endif
                         </div>
