@@ -25,7 +25,7 @@
 
   <div class="workspaceMain">
   	<div>
-  		<h2>{{ $workspace->name }}</h2>
+  		<h2 class="workspaceName">{{ $workspace->name }}</h2>
   		<div class="rating-sm">
         <p class="ratings-text">{{ $overallRating }}</p>
       </div>
@@ -63,52 +63,56 @@
       <div id="map"></div>
     </div>
 
-    <script>    
-      function initMap() {
-        var center = {lat: <?php echo $workspace['latitude'] ?>, lng: <?php echo $workspace['longitude'] ?>};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: center,
-          zoom: 15
-        });
-
-        var image = "{{ asset('images/marker-orange.png') }}";
-          image.height = 23;
-          image.width = 41;
-
-        var location = new google.maps.LatLng(<?php echo $workspace['latitude']; ?>, <?php echo $workspace['longitude']; ?>);
-        
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            icon: image
-        });
-        
-        map.setCenter(marker.getPosition());
-        
-      }
-    </script>
-
     <div class="ratingSection">
-      <div class="rating-sm">
+
+      <div class="rating-md">
         <p class="ratings-text">Overall Rating: {{ $overallRating }}</p>
+        @if ($ratingsCount === 1)
+          <div class="reviewNumber">{{ $ratingsCount }} Total Review</div>
+        @else
+          <div class="reviewNumber">{{ $ratingsCount }} Total Reviews</div>
+        @endif
       </div>
-      
-    @if ($ratingsCount === 1)
-      <p>{{ $ratingsCount }} Total Review</p>
-    @else
-      <p>{{ $ratingsCount }} Total Reviews</p>
-    @endif
-      
-      <p>Wifi Speed: {{ $wifiRating }}</p>
-      <p>Location: {{ $locationRating }}</p>
-      <p>Noise Level: {{ $noiseRating }}</p>
-      <p>Outlet Access: {{ $outletRating }}</p>
-      <p>Seating: {{ $seatRating }}</p>
-      <p>Hours: {{ $hoursRating }}</p>
-      <button>Add a Review</button>
+
+      <div>      
+        <div class="ratingsBar">Wifi Speed: {{ $wifiRating }}</div>
+        <div class="ratingsBar">Location: {{ $locationRating }}</div>
+        <div class="ratingsBar">Noise Level: {{ $noiseRating }}</div>
+        <div class="ratingsBar">Outlet Access: {{ $outletRating }}</div>
+        <div class="ratingsBar">Seating: {{ $seatRating }}</div>
+        <div class="ratingsBar">Hours: {{ $hoursRating }}</div>
+      </div>
+
+      <button class="reviewOutline">Add a Review</button>
+
     </div>
   </div>
+
+<script>    
+  function initMap() {
+    var center = {lat: <?php echo $workspace['latitude'] ?>, lng: <?php echo $workspace['longitude'] ?>};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: center,
+      zoom: 15
+    });
+
+    var image = "{{ asset('images/marker-orange.png') }}";
+      image.height = 23;
+      image.width = 41;
+
+    var location = new google.maps.LatLng(<?php echo $workspace['latitude']; ?>, <?php echo $workspace['longitude']; ?>);
+    
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        icon: image
+    });
+    
+    map.setCenter(marker.getPosition());
+    
+  }
+</script>
 
 </div>
 @endsection

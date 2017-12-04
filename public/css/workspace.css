@@ -1,3 +1,20 @@
+.workspaceMain {
+	float: left;
+	margin: 24px;
+	margin-right: 0;
+	width: 70%;
+}
+
+.sidebar {
+	float: right;
+	margin: 24px 24px 24px 0;
+	width: 324px;
+}
+
+.workspaceName {
+	margin: 0;
+}
+
 .mapContainerSm {
 	background-color: #f3f6f7;
 	height: 300px;
@@ -11,4 +28,44 @@
 	display: block !important;
 	height: 100%;
 	width: 100%;
+}
+
+.ratingSection {
+	margin-right: 24px;
+	width: 300px;
+}
+
+.rating-md {
+	background-color: #FF5722;
+	display: inline-block;
+	height: 30px;
+}
+
+.reviewNumber {
+	color: #757575;
+	margin-top: 12px;
+}
+
+.ratingsBar {
+	display: block;
+	margin-top: 12px;
+}
+
+.reviewOutline {
+	border: 1px solid #FF5722;
+	color: #FF5722;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	font-weight: 600;
+	margin-top: 24px;
+	outline: none;
+	padding-bottom: 6px;
+	padding-top: 7px;
+	width: 100%;
+}
+
+.reviewOutline:hover {
+	border: 1px solid #D0471D;
+	color: #D0471D;
+	cursor: pointer;
 }
