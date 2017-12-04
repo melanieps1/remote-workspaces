@@ -289,7 +289,24 @@ h5 {
 	margin-top: 74px;
 	padding: 0;
 	vertical-align: top;
-	width: 85%;
+	max-width: 85%;
+	min-width: 75%;
+}
+
+@media only screen and (max-width: 700px) {
+  .searchBarSm {
+		border: none;
+		box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+		float: left;
+		height: 30px;
+		margin-left: 24px;
+		margin-right: 4px;
+		margin-top: 74px;
+		padding: 0;
+		vertical-align: top;
+		max-width: 85%;
+		min-width: 55%;
+	}
 }
 
 .searchBarSm::placeholder {
@@ -380,6 +397,11 @@ h5 {
 	width: 65%;
 }
 
+.workspaceName {
+	margin: 0;
+	margin-right: 12px;
+}
+
 .blueLink {
 	color: #588CE5;
 	text-decoration: none;
@@ -412,16 +434,12 @@ li {
 	width: 25%;
 }
 
-.workspaceName {
-	margin: 0;
-	margin-right: 12px;
-}
-
 .mapContainerSm {
 	background-color: #f3f6f7;
 	height: 300px;
 	float: right;
-	margin: 24px 24px 24px 0;
+	margin-bottom: 24px;
+	margin-top: 8px;
 	width: 100%;
 	z-index: 1;
 }
@@ -434,7 +452,7 @@ li {
 
 .ratingSection {
 	margin-right: 24px;
-	width: 300px;
+	width: 100%;
 }
 
 .rating-md {

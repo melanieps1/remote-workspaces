@@ -5,6 +5,11 @@
 	width: 65%;
 }
 
+.workspaceName {
+	margin: 0;
+	margin-right: 12px;
+}
+
 .blueLink {
 	color: #588CE5;
 	text-decoration: none;
@@ -37,16 +42,12 @@ li {
 	width: 25%;
 }
 
-.workspaceName {
-	margin: 0;
-	margin-right: 12px;
-}
-
 .mapContainerSm {
 	background-color: #f3f6f7;
 	height: 300px;
 	float: right;
-	margin: 24px 24px 24px 0;
+	margin-bottom: 24px;
+	margin-top: 8px;
 	width: 100%;
 	z-index: 1;
 }
@@ -59,7 +60,7 @@ li {
 
 .ratingSection {
 	margin-right: 24px;
-	width: 300px;
+	width: 100%;
 }
 
 .rating-md {
