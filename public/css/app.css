@@ -85,7 +85,7 @@ body {
 h2 {
 	font-size: 30px;
 	font-weight: 600;
-	margin: 40px auto;
+	margin: 0;
 }
 
 h3 {
@@ -140,9 +140,10 @@ h5 {
 
 .floatingForm {
 	background-color: rgba(255, 255, 255, 0.55);
-	height: 295px;
+	height: 200px;
 	left: -webkit-calc( 50% - 350px );
 	overflow: hidden;
+	padding: 24px;
 	position: absolute;
 	text-align: center;
 	top: 25%;
@@ -150,7 +151,7 @@ h5 {
 }
 
 .searchDiv {
-	margin: 40px, 24px;
+	margin-top: 40px;
 }
 
 .orangeAccent {
@@ -216,10 +217,7 @@ h5 {
 	color: #757575;
 	font-size: 16px;
 	bottom: 40;
-	margin-bottom: 0;
-	margin-left: 24px;
-	margin-right: 24px;
-	margin-top: 40px;
+	margin: 24px 24px 0;
 }
 
 
@@ -479,7 +477,19 @@ li {
 
 .ratingsBar {
 	display: block;
+	font-weight: 600;
 	margin-top: 12px;
+}
+
+.ratingsBarGray {
+	background-color: #e5e6e7;
+	border-radius: 10px;
+	display: inline-block;
+	height: 12px;
+	margin-left:24px;
+	margin-right: 12px;
+	position: relative;
+	width: 161px;
 }
 
 .reviewOutline {
@@ -548,4 +558,109 @@ li {
 		text-align: center;
 		width: 100%;
 	}
+}
+.signUp {
+	background-image: url(/images/sign-up-page-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.floatingFormSignUp {
+	background-color: rgba(255, 255, 255, 0.55);
+	height: 470px;
+	left: -webkit-calc( 50% - 350px );
+	padding: 24px;
+	position: absolute;
+	text-align: center;
+	top: 25%;
+	width: 700px;
+}
+
+.formHeader {
+	margin-bottom: 24px;
+}
+
+label {
+	display: inline-block;
+	float: left;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	margin-top: 30px;
+	text-align: right;
+	width: 150px;
+}
+
+.logInInput {
+	border: none;
+	display: inline-block;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	height: 30px;
+	margin-top: 24px;
+	vertical-align: middle;
+	width: 500px;
+}
+
+.logInInput::placeholder {
+	padding-left: 12px;
+}
+
+.authBtn {
+	background-color: #FF5722;
+	border: none;
+	border-radius: 0;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 24px;
+	margin-top: 24px;
+	padding: 12px;
+	text-align: center;
+}
+
+.authBtn:hover {
+	background-color: #D0471D;
+	cursor: pointer;
+}
+
+.logIn {
+	background-image: url(/images/sign-in-page-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.floatingFormLogIn {
+	background-color: rgba(255, 255, 255, 0.55);
+	height: 300px;
+	left: -webkit-calc( 50% - 350px );
+	padding: 24px;
+	position: absolute;
+	text-align: center;
+	top: 25%;
+	width: 700px;
+}
+
+input[type="checkbox"] {
+	height: 16px;
+	width: 16px;
+}
+
+.grayTextLogIn {
+	color: #757575;
+	font-size: 16px;
+	margin-bottom: 24px;
+	margin-top: 0;
+	text-align: center;
 }

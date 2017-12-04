@@ -1,61 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="login-panel">
-    <h2>Log In</h2>
+<div class="logIn">
+    <div class="floatingFormLogIn">
+        <h2 class="formHeader">Log In</h2>
     
-    <form method="POST" action="{{ route('login') }}">
-        {{ csrf_field() }}
-
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        <form method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
 
             <div>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-
-                @if ($errors->has('email'))
-                    <span>
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-            <label for="password">Password</label>
-
-            <div>
-                <input id="password" type="password" name="password" required>
-
-                @if ($errors->has('password'))
-                    <span>
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-
-        <div>
-            <div>
+                <label for="email">Email</label>
                 <div>
-                    <label>
-                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                    </label>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Enter email" class="logInInput" required autofocus>
+
+                    @if ($errors->has('email'))
+                        <span>
+                            <br><strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
                 </div>
             </div>
-        </div>
 
-        <div>
             <div>
-                <button type="submit">
-                    Login
-                </button>
+                <label for="password">Password</label>
 
-                <a href="{{ route('password.request') }}">
-                    Forgot Your Password?
-                </a>
+                <div>
+                    <input id="password" type="password" name="password" placeholder="Enter password" class="logInInput" required>
+
+                    @if ($errors->has('password'))
+                        <span>
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
             </div>
-        </div>
-    </form>
+
+            <div class="rememberMe">
+                <label>
+                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                </label>
+            </div>
+            
+            <button type="submit" class="authBtn">
+                Log In
+            </button>
+
+        </form>
+
+        <p class="grayTextLogIn">
+            Don't have an account yet? <a href="{{ route('login') }}" class="blueLink">Sign up here</a>.
+        </p>
+
+    </div>
 </div>
 @endsection

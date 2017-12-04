@@ -87,7 +87,19 @@ li {
 
 .ratingsBar {
 	display: block;
+	font-weight: 600;
 	margin-top: 12px;
+}
+
+.ratingsBarGray {
+	background-color: #e5e6e7;
+	border-radius: 10px;
+	display: inline-block;
+	height: 12px;
+	margin-left:24px;
+	margin-right: 12px;
+	position: relative;
+	width: 161px;
 }
 
 .reviewOutline {

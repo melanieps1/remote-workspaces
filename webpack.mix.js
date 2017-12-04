@@ -18,5 +18,6 @@ mix.styles([
     'public/css/header.css',
     'public/css/style.css',
     'public/css/results.css',
-    'public/css/workspace.css'
+    'public/css/workspace.css',
+    'public/css/auth.css'
 ], 'public/css/app.css');

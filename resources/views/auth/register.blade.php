@@ -1,69 +1,84 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="login-panel">
-    <h2>Sign Up</h2>
+<div class="signUp">
 
-    <form method="POST" action="{{ route('register') }}">
-        {{ csrf_field() }}
+    <div class="floatingFormSignUp">
+        <h2 class="formHeader">Sign Up</h2>
 
-        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            <label for="name">Name</label>
+            <p class="grayText">
+                Welcome to Remote Workspaces!  Sign up here to unlock new site features.
+                Already have an account? <a href="{{ route('login') }}" class="blueLink">Log in here</a>.
+            </p>
 
-            <div>
-                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                <form method="POST" action="{{ route('register') }}">
+                    {{ csrf_field() }}
 
-                @if ($errors->has('name'))
-                    <span>
-                        <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                @endif
+                    <div>
+                        <label for="name">Name</label>
+                        <div>
+                            <input id="name" type="text" name="name" value="{{ old('name') }}" placeholder="Enter name" class="logInInput" required autofocus>
+
+                            @if ($errors->has('name'))
+                                <span>
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email">E-Mail Address</label>
+                        <div>
+                            <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Enter email" class="logInInput" required>
+
+                            @if ($errors->has('email'))
+                                <span>
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="username">Username</label>
+                        <div>
+                            <input id="username" type="username" name="username" value="{{ old('username') }}" placeholder="Enter desired username" class="logInInput" required>
+
+                            @if ($errors->has('username'))
+                                <span>
+                                    <strong>{{ $errors->first('username') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="password">Password</label>
+                        <div>
+                            <input id="password" type="password" name="password" placeholder="Enter password" class="logInInput" required>
+
+                            @if ($errors->has('password'))
+                                <span>
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="password-confirm">Confirm Password</label>
+                        <div>
+                            <input id="password-confirm" type="password" name="password_confirmation" placeholder="Confirm password" class="logInInput" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="authBtn">
+                        Sign Up
+                    </button>
+
+                </form>
             </div>
-        </div>
-
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="email">E-Mail Address</label>
-
-            <div>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-
-                @if ($errors->has('email'))
-                    <span>
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-            <label for="password">Password</label>
-
-            <div>
-                <input id="password" type="password" name="password" required>
-
-                @if ($errors->has('password'))
-                    <span>
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-
-        <div>
-            <label for="password-confirm">Confirm Password</label>
-
-            <div>
-                <input id="password-confirm" type="password" name="password_confirmation" required>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <button type="submit">
-                    Register
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+    
+    </div>
 @endsection

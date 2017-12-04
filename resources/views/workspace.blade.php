@@ -69,19 +69,37 @@
       <div class="rating-md">
         <p class="ratings-text">Overall Rating: {{ $overallRating }}</p>
         @if ($ratingsCount === 1)
-          <div class="reviewNumber">{{ $ratingsCount }} Total Review</div>
+          <div class="reviewNumber"><i class="fa fa-star" aria-hidden="true"></i> {{ $ratingsCount }} Total Review</div>
         @else
-          <div class="reviewNumber">{{ $ratingsCount }} Total Reviews</div>
+          <div class="reviewNumber"><i class="fa fa-star" aria-hidden="true"></i> {{ $ratingsCount }} Total Reviews</div>
         @endif
       </div>
 
       <div>      
-        <div class="ratingsBar">Wifi Speed: {{ $wifiRating }}</div>
-        <div class="ratingsBar">Location: {{ $locationRating }}</div>
-        <div class="ratingsBar">Noise Level: {{ $noiseRating }}</div>
-        <div class="ratingsBar">Outlet Access: {{ $outletRating }}</div>
-        <div class="ratingsBar">Seating: {{ $seatRating }}</div>
-        <div class="ratingsBar">Hours: {{ $hoursRating }}</div>
+        <div class="ratingsBar">Wifi Speed:
+          <div class="ratingsBarGray"></div>
+          {{ $wifiRating }}
+        </div>
+        <div class="ratingsBar">Location:
+          <div class="ratingsBarGray"></div>
+          {{ $locationRating }}
+        </div>
+        <div class="ratingsBar">Noise Level:
+          <div class="ratingsBarGray"></div>
+          {{ $noiseRating }}
+        </div>
+        <div class="ratingsBar">Outlet Access:
+          <div class="ratingsBarGray"></div>
+          {{ $outletRating }}
+        </div>
+        <div class="ratingsBar">Seating:
+          <div class="ratingsBarGray"></div>
+          {{ $seatRating }}
+        </div>
+        <div class="ratingsBar">Hours:
+          <div class="ratingsBarGray"></div>
+          {{ $hoursRating }}
+        </div>
       </div>
 
       <button class="reviewOutline">Add a Review</button>
