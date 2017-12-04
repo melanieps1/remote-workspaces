@@ -26,7 +26,7 @@ class WorkspaceController extends Controller
         $string = $request->input('location-search-bar');
 
         $string = str_replace (" ", "+", urlencode($string));
-        $details_url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . $string . "&sensor=false";
+        $details_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . $string . "&sensor=false";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $details_url);
