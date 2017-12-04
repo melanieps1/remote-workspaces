@@ -64,13 +64,13 @@ class WorkspaceController extends Controller
         curl_close($ch);
 
         foreach ($workspaces as $workspace) {
-            $workspace->overallRating = $this->rating($workspace->id);
+            $workspace->overallRating = $this->overallRating($workspace->id);
         }
 
         return view('/results', compact('workspaces', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
     }
 
-    public function rating($id)
+    public function overallRating($id)
     {
         $ratings = \App\Rating::where('workspace_id', '=', $id)->get();
 
@@ -103,27 +103,6 @@ class WorkspaceController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -135,9 +114,8 @@ class WorkspaceController extends Controller
 
         $ratings = \App\Rating::where('workspace_id', '=', $id)->get();
 
-        $overallRating = $this->rating($id);
+        $overallRating = $this->overallRating($id);
 
-        $ratings = \App\Rating::where('workspace_id', '=', $id)->get();
 
         // calculation for user review ratings
 
@@ -154,9 +132,11 @@ class WorkspaceController extends Controller
             $rating->average = round($sum/6, 1);
         }
 
+
         // number of reviews on workspace
 
         $ratingsCount = count($ratings);
+
 
         // calculation for ratings of each amenity
 
@@ -195,8 +175,30 @@ class WorkspaceController extends Controller
             $hoursRatingSum += $rating->hours_rating;
         }
         $hoursRating = round($hoursRatingSum / count($ratings), 1);
+        
 
         return view('workspace', compact('workspace', 'ratings', 'overallRating', 'ratingsCount', 'wifiRating', 'locationRating', 'noiseRating', 'outletRating', 'seatRating', 'hoursRating'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
