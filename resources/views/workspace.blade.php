@@ -25,17 +25,18 @@
 
   <div class="workspaceMain">
   	<div>
-  		<h2 class="workspaceName">{{ $workspace->name }}</h2>
-  		<div class="rating-sm">
-        <p class="ratings-text">{{ $overallRating }}</p>
-      </div>
+  		<h2 class="workspaceName">
+        {{ $workspace->name }}
+      </h2>
+  		
     </div>
   	<h5>{{ $workspace->category->name }}</h5>
+    <div class="rating-sm">
+          <p class="ratings-text">{{ $overallRating }}</p>
+        </div>
   	<p>{{ $workspace->address }}</p>
-	@if ($workspace->website === null)
-		<!-- TODO: This isn't working yet -->
-	@else
-  	<a href="{{ $workspace->website }}" target="_blank" class="blueLink"><i class="fa fa-external-link" aria-hidden="true"></i>View Website</a>
+	@if ($workspace->website != null)
+  	<a href="{{$workspace->website}}" target="_blank" class="blueLink"><i class="fa fa-external-link" aria-hidden="true"></i>View Website</a>
 	@endif
 		<p>{{ $workspace->description }}</p>
 		<hr>
@@ -49,7 +50,7 @@
 				<p>
 					{{ $rating->review }}
 					<br><br>
-					{{ $rating->user->username }} • {{ $rating->updated_at->format('F Y') }} • {{ $rating->average }}
+					<div class="rating-xs"> {{ $rating->average }} </div>• {{ $rating->user->username }} • {{ $rating->updated_at->format('F Y') }}
 				</p>
 			</li>
 		@endforeach

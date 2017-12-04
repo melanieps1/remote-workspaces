@@ -104,6 +104,7 @@ h5 {
 	font-weight: 600;
 	margin: 0;
 	margin-top: 4px;
+	margin-bottom: 12px;
 	text-transform: uppercase;
 }
 
@@ -112,6 +113,7 @@ h5 {
 	background-color: #FF5722;
 	display: inline-block;
 	height: 30px;
+	margin-bottom: 12px;
 }
 
 .ratings-text {
@@ -374,26 +376,53 @@ h5 {
 .workspaceMain {
 	float: left;
 	margin: 24px;
-	margin-right: 0;
-	width: 70%;
+	margin-right: 24px;
+	width: 65%;
+}
+
+.blueLink {
+	color: #588CE5;
+	text-decoration: none;
+}
+
+.fa-external-link {
+	margin-right: 4px;
+}
+
+hr {
+	border: 0.5px solid #cccccc;
+	margin-bottom: 24px;
+	margin-top: 24px;
+}
+
+ul {
+	list-style: none;
+	max-height: 500px;
+	overflow: scroll;
+	padding: 0;
+}
+
+li {
+	margin-bottom: 24px;
 }
 
 .sidebar {
 	float: right;
 	margin: 24px 24px 24px 0;
-	width: 324px;
+	width: 25%;
 }
 
 .workspaceName {
 	margin: 0;
+	margin-right: 12px;
 }
 
 .mapContainerSm {
 	background-color: #f3f6f7;
 	height: 300px;
 	float: right;
-	margin: 24px;
-	width: 300px;
+	margin: 24px 24px 24px 0;
+	width: 100%;
 	z-index: 1;
 }
 
@@ -412,6 +441,17 @@ h5 {
 	background-color: #FF5722;
 	display: inline-block;
 	height: 30px;
+}
+
+.rating-xs {
+	background-color: #FF5722;
+	color: white;
+	display: inline;
+	font-weight: 600;
+	height: 20px;
+	margin-right: 8px;
+	padding: 4px 8px;
+	text-align: center;
 }
 
 .reviewNumber {
@@ -441,4 +481,53 @@ h5 {
 	border: 1px solid #D0471D;
 	color: #D0471D;
 	cursor: pointer;
+}
+
+@media only screen and (max-width: 1125px) {
+	.workspaceMain {
+		float: left;
+		margin: 24px;
+		margin-right: 24px;
+		width: 90%;
+	}
+	.sidebar {
+		box-sizing: border-box;
+		margin: 0;
+		width: 100%;
+	}
+
+	.mapContainerSm {
+		background-color: #f3f6f7;
+		height: 300px;
+		float: right;
+		width: 100%;
+		z-index: 1;
+	}
+
+	#mapSm {
+		display: block !important;
+		height: 100%;
+		width: 100%;
+	}
+
+	.ratingSection {
+		margin: 48px;
+		text-align: center;
+		width: 85%;
+	}
+
+	.rating-md {
+		background-color: #FF5722;
+		display: inline-block;
+		height: 30px;
+		text-align: center;
+		width: 100%;
+	}
+
+	.ratingsBar {
+		display: block;
+		margin-top: 12px;
+		text-align: center;
+		width: 100%;
+	}
 }
