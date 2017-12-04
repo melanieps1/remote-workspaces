@@ -63,7 +63,43 @@ class WorkspaceController extends Controller
         
         curl_close($ch);
 
+        foreach ($workspaces as $workspace) {
+            $workspace->overallRating = $this->rating($workspace->id);
+        }
+
         return view('/results', compact('workspaces', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
+    }
+
+    public function rating($id)
+    {
+        $ratings = \App\Rating::where('workspace_id', '=', $id)->get();
+
+        // calculation for user review ratings
+
+        foreach ($ratings as $rating) {
+            $sum = 0;
+
+            $sum += $rating->wifi_rating
+                + $rating->location_rating
+                + $rating->noise_rating
+                + $rating->outlets_rating
+                + $rating->seating_rating
+                + $rating->hours_rating;
+        
+            $rating->average = round($sum/6, 1);
+        }
+
+        // calculation for workspace rating
+
+        $ratingSum = 0;
+
+        foreach ($ratings as $rating) {
+            $ratingSum += $rating->average;
+        }
+
+        $overallRating = round($ratingSum / count($ratings), 1);
+
+        return $overallRating;
     }
 
     /**
@@ -97,7 +133,11 @@ class WorkspaceController extends Controller
     {
         $workspace = \App\Workspace::find($id);
 
-        $ratings = \App\Rating::where('workspace_id', '=', $workspace->id)->get();
+        $ratings = \App\Rating::where('workspace_id', '=', $id)->get();
+
+        $overallRating = $this->rating($id);
+
+        $ratings = \App\Rating::where('workspace_id', '=', $id)->get();
 
         // calculation for user review ratings
 
@@ -113,16 +153,6 @@ class WorkspaceController extends Controller
         
             $rating->average = round($sum/6, 1);
         }
-
-        // calculation for workspace rating
-
-        $ratingSum = 0;
-
-        foreach ($ratings as $rating) {
-            $ratingSum += $rating->average;
-        }
-
-        $overallRating = round($ratingSum / count($ratings), 1);
 
         // number of reviews on workspace
 

@@ -102,7 +102,7 @@
         </div>
       </div>
 
-      <button class="reviewOutline">Add a Review</button>
+      <a href="#"><button class="reviewOutline">Add a Review</button></a>
 
     </div>
   </div>
