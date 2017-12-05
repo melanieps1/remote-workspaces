@@ -114,8 +114,9 @@ class WorkspaceController extends Controller
     public function create()
     {
         $workspaces = \App\Workspace::all();
+        $categories = \App\Category::all();
 
-        return view('create', compact('workspaces'));
+        return view('create', compact('workspaces', 'categories'));
     }
 
     /**

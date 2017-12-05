@@ -25,8 +25,8 @@
           <label>Category</label>
           <div>
             <select class="addInput" name="category_id">
-          @foreach ($workspaces as $workspace)
-              <option value="{{ $workspace->category->id }}">{{ $workspace->category->name }}</option>
+          @foreach ($categories as $category)
+              <option value="{{ $category->id }}">{{ $category->name }}</option>
           @endforeach
             </select>
           </div>
