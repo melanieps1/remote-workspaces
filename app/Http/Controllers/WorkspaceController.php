@@ -97,7 +97,11 @@ class WorkspaceController extends Controller
             $ratingSum += $rating->average;
         }
 
-        $overallRating = round($ratingSum / count($ratings), 1);
+        if (count($ratings) > 0) {
+            $overallRating = round($ratingSum / count($ratings), 1);
+        } else {
+            $overallRating = 0;
+        }
 
         return $overallRating;
     }
@@ -167,7 +171,9 @@ class WorkspaceController extends Controller
             $workspace->save();
         }
 
-        return redirect('/home');
+        $id = $workspace->id;
+        // return redirect('/home');
+        return redirect('/workspaces/' . $workspace->id);
     }
 
     /**
@@ -212,37 +218,61 @@ class WorkspaceController extends Controller
         foreach ($ratings as $rating) {
             $wifiRatingSum += $rating->wifi_rating;
         }
-        $wifiRating = round($wifiRatingSum / count($ratings), 1);
+        if (count($ratings) > 0) {
+            $wifiRating = round($wifiRatingSum / count($ratings), 1);
+        } else {
+            $wifiRating = 0;
+        }
 
         $locationRatingSum = 0;
         foreach ($ratings as $rating) {
             $locationRatingSum += $rating->location_rating;
         }
-        $locationRating = round($locationRatingSum / count($ratings), 1);
+        if (count($ratings) > 0) {
+            $locationRating = round($locationRatingSum / count($ratings), 1);
+        } else {
+            $locationRating = 0;
+        }
 
         $noiseRatingSum = 0;
         foreach ($ratings as $rating) {
             $noiseRatingSum += $rating->noise_rating;
         }
-        $noiseRating = round($noiseRatingSum / count($ratings), 1);
+        if (count($ratings) > 0) {
+            $noiseRating = round($noiseRatingSum / count($ratings), 1);
+        } else {
+            $noiseRating = 0;
+        }
 
         $outletRatingSum = 0;
         foreach ($ratings as $rating) {
             $outletRatingSum += $rating->outlets_rating;
         }
-        $outletRating = round($outletRatingSum / count($ratings), 1);
+        if (count($ratings) > 0) {
+            $outletRating = round($outletRatingSum / count($ratings), 1);
+        } else {
+            $outletRating = 0;
+        }
 
         $seatRatingSum = 0;
         foreach ($ratings as $rating) {
             $seatRatingSum += $rating->seating_rating;
         }
-        $seatRating = round($seatRatingSum / count($ratings), 1);
+        if (count($ratings) > 0) {
+            $seatRating = round($seatRatingSum / count($ratings), 1);
+        } else {
+            $seatRating = 0;
+        }
 
         $hoursRatingSum = 0;
         foreach ($ratings as $rating) {
             $hoursRatingSum += $rating->hours_rating;
         }
-        $hoursRating = round($hoursRatingSum / count($ratings), 1);
+        if (count($ratings) > 0) {
+            $hoursRating = round($hoursRatingSum / count($ratings), 1);
+        } else {
+            $hoursRating = 0;
+        }
         
 
         return view('workspace', compact('workspace', 'ratings', 'overallRating', 'ratingsCount', 'wifiRating', 'locationRating', 'noiseRating', 'outletRating', 'seatRating', 'hoursRating'));
