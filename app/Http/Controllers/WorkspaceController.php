@@ -103,6 +103,70 @@ class WorkspaceController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $categories = \App\Category::all();
+
+        return view('add', compact('categories'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $workspace = new \App\Workspace;
+
+        $workspace->name = $request->input('name');
+        $workspace->category_id = $request->input('category_id');
+        $workspace->submitted_by_id = \Auth::user()->id;
+        $workspace->description = $request->input('description');
+        $workspace->website = $request->input('website');
+
+        // This code geocodes the search bar input and passes it to the results page
+
+        $string = $request->input('address');
+
+        $string = str_replace (" ", "+", urlencode($string));
+        $details_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . $string . "&sensor=false";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $details_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $response = json_decode(curl_exec($ch), true);
+
+        // Error state (if Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST)
+        if ($response['status'] != 'OK') {
+            // sleep(1);
+            // $response = json_decode(curl_exec($ch), true);
+            return 'Invalid request' . $response['status'];
+            // Google is rejecting request (over query limit), stretch goal: retry x times after sleeping for a second
+        }
+
+        // print_r($response);
+        $geoloc = $response['results'][0]['geometry'];
+
+        $formattedAddress = $response['results'][0]['formatted_address'];
+        $lat = $geoloc['location']['lat'];
+        $lng = $geoloc['location']['lng'];
+
+        $workspace->address = $formattedAddress;
+        $workspace->latitude = $lat;
+        $workspace->longitude = $lng;
+        
+        $workspace->save();
+
+        return redirect('home');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -178,27 +242,6 @@ class WorkspaceController extends Controller
         
 
         return view('workspace', compact('workspace', 'ratings', 'overallRating', 'ratingsCount', 'wifiRating', 'locationRating', 'noiseRating', 'outletRating', 'seatRating', 'hoursRating'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

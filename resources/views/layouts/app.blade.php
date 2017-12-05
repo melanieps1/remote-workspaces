@@ -32,7 +32,7 @@
                         <a href="{{ route('register') }}" class="log-in-out-btn">Sign Up</a>
                     @else
 
-                        <a href="#" class="primary-btn">
+                        <a href="{{ url('/workspaces/create') }}" class="primary-btn">
                             Add a Workspace
                         </a>
 
