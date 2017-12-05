@@ -19,5 +19,6 @@ mix.styles([
     'public/css/style.css',
     'public/css/results.css',
     'public/css/workspace.css',
-    'public/css/auth.css'
+    'public/css/auth.css',
+    'public/css/forms.css'
 ], 'public/css/app.css');

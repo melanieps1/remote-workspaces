@@ -11,7 +11,7 @@
             <div>
                 <label for="email">Email</label>
                 <div>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Enter email" class="logInInput" required autofocus>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Enter email" class="logInInput" required>
 
                     @if ($errors->has('email'))
                         <span>

@@ -17,7 +17,7 @@
                     <div>
                         <label for="name">Name</label>
                         <div>
-                            <input id="name" type="text" name="name" value="{{ old('name') }}" placeholder="Enter name" class="logInInput" required autofocus>
+                            <input id="name" type="text" name="name" value="{{ old('name') }}" placeholder="Enter name" class="logInInput" required>
 
                             @if ($errors->has('name'))
                                 <span>

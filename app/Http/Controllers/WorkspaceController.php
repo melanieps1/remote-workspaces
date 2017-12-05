@@ -109,9 +109,10 @@ class WorkspaceController extends Controller
      */
     public function create()
     {
+        $workspaces = \App\Workspace::all();
         $categories = \App\Category::all();
 
-        return view('create', compact('categories'));
+        return view('create', compact('categories', 'workspaces'));
     }
 
     /**
@@ -125,7 +126,7 @@ class WorkspaceController extends Controller
         $workspace = new \App\Workspace;
 
         $workspace->name = $request->input('name');
-        $workspace->category_id = $request->input('category_id');
+        $workspace->category_id = $request->input('category_id');  // $workspace->category->id
         $workspace->submitted_by_id = \Auth::user()->id;
         $workspace->description = $request->input('description');
         $workspace->website = $request->input('website');

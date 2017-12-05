@@ -1,79 +1,80 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="homeBlade">
+<div class="createBlade">
     @if (session('status'))
         <div>
             {{ session('status') }}
         </div>
     @endif
 
-	<h1>Add a Workspace</h1>
+    <div class="floatingFormAdd">
+      <h2 class="formHeader">Add a Workspace</h2>
 
-	<form method="POST" action="#">
-    {{ csrf_field() }}
+    	<form method="POST" action="#">
+        {{ csrf_field() }}
 
-    <div>
-      <label>Name</label>
-      <div>
-        <input type="text" name="name" placeholder="Enter name of workspace" class="logInInput" required autofocus>
-      </div>
+        <div>
+          <label>Name</label>
+          <div>
+            <input type="text" name="name" placeholder="Enter name of workspace" class="addInput" required>
+          </div>
+        </div>
+
+        <div>
+          <label>Category</label>
+          <div>
+            <select class="addInput" name="category_id">
+          @foreach ($workspaces as $workspace)
+              <option value="{{ $workspace->category->name }}">{{ $workspace->category->name }}</option>
+          @endforeach
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>Description</label>
+          <div>
+            <textarea type="text" name="description" placeholder="Enter description" class="textInput" height="150" required></textarea>
+          </div>
+        </div>
+
+        <div>
+          <label>Website</label>
+          <div>
+            <input type="text" name="website" placeholder="https://www.example.com" class="addInput">
+          </div>
+        </div>
+
+        <div>
+          <label>Address</label>
+          <div>
+            <textarea type="text" name="address" placeholder="123 Main St, New York, NY, 10001" class="textInput" required></textarea>
+          </div>
+        </div>
+
+        <div>
+          <input type="hidden" name="latitude" required>
+        </div>
+
+        <div>
+          <input type="hidden" name="longitude" required>
+        </div>
+
+
+        <div>
+          <input type="hidden" name="submitted_by" required>
+        </div>
+        
+        <div class="addBtnDiv">
+          <button type="submit" class="addBtn">
+            Add Workspace
+          </button>
+        </div>
+
+    	</form>
+
     </div>
-
-    <div>
-      <label>Category</label>
-      <div>
-        <input type="text" name="category" placeholder="Enter name of workspace" class="logInInput" required autofocus>
-      </div>
-    </div>
-
-    <div>
-      <label>Description</label>
-      <div>
-        <input type="text" name="description" placeholder="Enter name of workspace" class="logInInput" required autofocus>
-      </div>
-    </div>
-
-    <div>
-      <label>Website</label>
-      <div>
-        <input type="text" name="website" placeholder="Enter name of workspace" class="logInInput" autofocus>
-      </div>
-    </div>
-
-    <div>
-      <label>Address</label>
-      <div>
-        <input type="text" name="address" placeholder="Enter name of workspace" class="logInInput" required autofocus>
-      </div>
-    </div>
-
-    <div>
-      <label>Latitude</label>
-      <div>
-        <input type="hidden" name="latitude" placeholder="Enter name of workspace" class="logInInput" required autofocus>
-      </div>
-    </div>
-
-    <div>
-      <label>Longitude</label>
-      <div>
-        <input type="hidden" name="longitude" placeholder="Enter name of workspace" class="logInInput" required autofocus>
-      </div>
-    </div>
-
-    <div>
-      <label>Submitted By</label>
-      <div>
-        <input type="hidden" name="submitted_by" placeholder="Enter name of workspace" class="logInInput" required autofocus>
-      </div>
-    </div>
-    
-    <button type="submit" class="authBtn">
-      Add Workspace
-    </button>
-
-	</form>
 
 </div>
 @endsection
