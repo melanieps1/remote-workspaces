@@ -111,7 +111,7 @@ class WorkspaceController extends Controller
     {
         $categories = \App\Category::all();
 
-        return view('add', compact('categories'));
+        return view('create', compact('categories'));
     }
 
     /**
