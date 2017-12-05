@@ -11,7 +11,7 @@
     <div class="floatingFormAdd">
       <h2 class="formHeader">Add a Workspace</h2>
 
-    	<form method="POST" action="#">
+    	<form method="POST" action="/workspaces">
         {{ csrf_field() }}
 
         <div>
@@ -26,7 +26,7 @@
           <div>
             <select class="addInput" name="category_id">
           @foreach ($workspaces as $workspace)
-              <option value="{{ $workspace->category->name }}">{{ $workspace->category->name }}</option>
+              <option value="{{ $workspace->category->id }}">{{ $workspace->category->name }}</option>
           @endforeach
             </select>
           </div>
@@ -67,13 +67,12 @@
         </div>
         
         <div class="addBtnDiv">
-          <button type="submit" class="addBtn">
+          <button type="submit" name="button" value="addWorkspace" class="addBtn">
             Add Workspace
           </button>
         </div>
 
-    	</form>
-
+      </form>
     </div>
 
 </div>

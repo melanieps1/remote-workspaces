@@ -110,9 +110,8 @@ class WorkspaceController extends Controller
     public function create()
     {
         $workspaces = \App\Workspace::all();
-        $categories = \App\Category::all();
 
-        return view('create', compact('categories', 'workspaces'));
+        return view('create', compact('workspaces'));
     }
 
     /**
@@ -126,7 +125,10 @@ class WorkspaceController extends Controller
         $workspace = new \App\Workspace;
 
         $workspace->name = $request->input('name');
-        $workspace->category_id = $request->input('category_id');  // $workspace->category->id
+        $workspace->category_id = $request->get('category_id');
+
+        // dd($workspace->category_id);
+
         $workspace->submitted_by_id = \Auth::user()->id;
         $workspace->description = $request->input('description');
         $workspace->website = $request->input('website');
@@ -147,7 +149,6 @@ class WorkspaceController extends Controller
         if ($response['status'] != 'OK') {
             // sleep(1);
             // $response = json_decode(curl_exec($ch), true);
-            return 'Invalid request' . $response['status'];
             // Google is rejecting request (over query limit), stretch goal: retry x times after sleeping for a second
         }
 
@@ -162,9 +163,11 @@ class WorkspaceController extends Controller
         $workspace->latitude = $lat;
         $workspace->longitude = $lng;
         
-        $workspace->save();
+        if ($request->input('button') === 'addWorkspace') {
+            $workspace->save();
+        }
 
-        return redirect('home');
+        return redirect('/home');
     }
 
     /**
