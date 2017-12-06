@@ -20,28 +20,24 @@ class WorkspaceController extends Controller
 
     public function search(Request $request)
     {
-
-        // This code geocodes the search bar input and passes it to the results page
-
         $string = $request->input('location-search-bar');
 
-        $string = str_replace (" ", "+", urlencode($string));
-        $details_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . $string . "&sensor=false";
+        $address = urlencode($string);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $details_url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
+        $url = "https://maps.google.com/maps/api/geocode/json?address={$address}&key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw";
+
+        // get the json response
+        $resp_json = file_get_contents($url);
+         
+        // decode the json
+        $response = json_decode($resp_json, true);
 
         // Error state (if Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST)
+
         if ($response['status'] != 'OK') {
-            // sleep(1);
-            // $response = json_decode(curl_exec($ch), true);
-            return 'Invalid request' . $response['status'];
-            // Google is rejecting request (over query limit), stretch goal: retry x times after sleeping for a second
+            return 'Invalid request' . \n . $response['status'];
         }
 
-        // print_r($response);
         $geoloc = $response['results'][0]['geometry'];
 
         $formattedAddress = $response['results'][0]['formatted_address'];
@@ -60,8 +56,6 @@ class WorkspaceController extends Controller
                                         ['longitude', '<', $neLngViewport],
                                         ])
                                         ->get();
-        
-        curl_close($ch);
 
         foreach ($workspaces as $workspace) {
             $workspace->overallRating = $this->overallRating($workspace->id);
