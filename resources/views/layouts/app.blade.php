@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
-    <link href="../images/favicon.png" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/favicon.png">
 
     <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/e81701c933.js"></script>
