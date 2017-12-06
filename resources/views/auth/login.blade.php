@@ -48,7 +48,7 @@
         </form>
 
         <p class="grayTextLogIn">
-            Don't have an account yet? <a href="{{ route('login') }}" class="blueLink">Sign up here</a>.
+            Don't have an account yet? <a href="{{ route('register') }}" class="blueLink">Sign up here</a>.
         </p>
 
     </div>

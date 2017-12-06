@@ -33,7 +33,6 @@ class WorkspaceController extends Controller
         $response = json_decode($resp_json, true);
 
         // Error state (if Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST)
-
         if ($response['status'] != 'OK') {
             return 'Invalid request' . \n . $response['status'];
         }

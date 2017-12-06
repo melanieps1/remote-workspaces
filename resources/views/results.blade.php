@@ -54,10 +54,14 @@
 
     @else
       <div class="zeroState">
+      @if (Auth::guest())
+        <p class="zeroStateText">No workspaces in {{ $formattedAddress }} yet!</p>
+      @else
         <p class="zeroStateText">No workspaces in {{ $formattedAddress }} yet!</p>
         <p class="zeroStateSubText">Would you like to add one?</p>
         <br>
-        <a href="#" class="primary-btn-inline">Add a Workspace</a>
+        <a href="{{ url('/workspaces/create') }}" class="primary-btn-inline">Add a Workspace</a>
+      @endif
       </div>
 
     @endif
