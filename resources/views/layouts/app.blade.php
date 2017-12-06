@@ -13,6 +13,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link href="../favicon.png" rel="stylesheet">
+
     <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/e81701c933.js"></script>
 
