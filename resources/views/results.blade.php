@@ -19,54 +19,51 @@
       {{ csrf_field() }}
       <button type="submit" name="button" value="search" class="searchBtnSm">
         <i class="fa fa-search searchIconSm" aria-hidden="true"></i>
-        Modify Search
+        Search
       </button>
     </form>
   </div>
 
-  <div class="leftSide">
-    <div class="results-container">
+  <div class="results-container">
 
-    @if (count($workspaces) > 0)
+  @if (count($workspaces) > 0)
 
-      @foreach ($workspaces as $workspace)
-      	
-        <div class="results-card" onclick="document.location='/workspaces/{{ $workspace->id }}'">
-          <h3>{{ $workspace->name }}</h3>
-          <h5>{{ $workspace->category->name }}</h5>
-          <div class="results-card-desc-container">
-            <div class="rating-sm">
-            @if ($workspace->ratingsCount === 0)
-              <p class="ratings-text">--</p>
-            @else
-              <p class="ratings-text">{{ $workspace->overallRating }}</p>
-            @endif
-            </div>
-          @if ($workspace->ratingsCount === 1)
-            <p class="results-card-desc">{{ $workspace->ratingsCount }} total review</p>
+    @foreach ($workspaces as $workspace)
+    	
+      <div class="results-card" onclick="document.location='/workspaces/{{ $workspace->id }}'">
+        <h3>{{ $workspace->name }}</h3>
+        <h5>{{ $workspace->category->name }}</h5>
+        <div class="results-card-desc-container">
+          <div class="rating-sm">
+          @if ($workspace->ratingsCount === 0)
+            <p class="ratings-text">--</p>
           @else
-            <p class="results-card-desc">{{ $workspace->ratingsCount }} total reviews</p>
+            <p class="ratings-text">{{ $workspace->overallRating }}</p>
           @endif
           </div>
+        @if ($workspace->ratingsCount === 1)
+          <p class="results-card-desc">{{ $workspace->ratingsCount }} total review</p>
+        @else
+          <p class="results-card-desc">{{ $workspace->ratingsCount }} total reviews</p>
+        @endif
         </div>
-
-      @endforeach
-
-    @else
-      <div class="zeroState">
-      @if (Auth::guest())
-        <p class="zeroStateText">No workspaces in {{ $formattedAddress }} yet!</p>
-      @else
-        <p class="zeroStateText">No workspaces in {{ $formattedAddress }} yet!</p>
-        <p class="zeroStateSubText">Would you like to add one?</p>
-        <br>
-        <a href="{{ url('/workspaces/create') }}" class="primary-btn-inline">Add a Workspace</a>
-      @endif
       </div>
 
-    @endif
+    @endforeach
 
+  @else
+    <div class="zeroState">
+    @if (Auth::guest())
+      <p class="zeroStateText">No workspaces in {{ $formattedAddress }} yet!</p>
+    @else
+      <p class="zeroStateText">No workspaces in {{ $formattedAddress }} yet!</p>
+      <p class="zeroStateSubText">Would you like to add one?</p>
+      <br>
+      <a href="{{ url('/workspaces/create') }}" class="primary-btn-inline">Add a Workspace</a>
+    @endif
     </div>
+
+  @endif
 
   </div>
 

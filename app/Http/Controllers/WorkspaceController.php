@@ -198,7 +198,6 @@ class WorkspaceController extends Controller
 
         $overallRating = $this->overallRating($id);
 
-
         // calculation for user review ratings
 
         foreach ($ratings as $rating) {

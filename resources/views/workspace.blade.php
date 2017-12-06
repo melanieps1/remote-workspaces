@@ -10,15 +10,15 @@
 
 	<div class="smallSearch">
     <form method="POST" action="/workspaces/search" id="location-form">
-        <div class="searchDiv">
-            <div class="orangeAccentSm"></div>
-            <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" name="location-search-bar">
-        </div>
+      <div class="searchDiv">
+          <div class="orangeAccentSm"></div>
+          <input class="searchBarSm" type="text" placeholder="Enter a location (city or zip code)" name="location-search-bar">
+      </div>
       <input name="_method" type="hidden" value="POST">
       {{ csrf_field() }}
       <button type="submit" name="button" value="search" class="searchBtnSm">
         <i class="fa fa-search searchIconSm" aria-hidden="true"></i>
-        Modify Search
+        Search
       </button>
     </form>
   </div>
@@ -85,33 +85,39 @@
         @endif
       </div>
 
-      <div>
+      <div class="ratingsBarSection">
       @if ($workspace->ratingsCount === 0)
         <br>No ratings yet!
       @else
-        <div class="ratingsBar">Wifi Speed:
+        <div class="ratingsBar">
+          <div class="ratingsBarText">Wifi Speed:</div>
           <div class="ratingsBarGray"></div>
-          {{ $wifiRating }}
+          <div class="ratingsBarRating">{{ $wifiRating }}</div>
         </div>
-        <div class="ratingsBar">Location:
+        <div class="ratingsBar">
+          <div class="ratingsBarText">Location:</div>
           <div class="ratingsBarGray"></div>
-          {{ $locationRating }}
+          <div class="ratingsBarRating">{{ $locationRating }}</div>
         </div>
-        <div class="ratingsBar">Noise Level:
+        <div class="ratingsBar">
+          <div class="ratingsBarText">Noise Level:</div>
           <div class="ratingsBarGray"></div>
-          {{ $noiseRating }}
+          <div class="ratingsBarRating">{{ $noiseRating }}</div>
         </div>
-        <div class="ratingsBar">Outlet Access:
+        <div class="ratingsBar">
+          <div class="ratingsBarText">Outlet Access:</div>
           <div class="ratingsBarGray"></div>
-          {{ $outletRating }}
+          <div class="ratingsBarRating">{{ $outletRating }}</div>
         </div>
-        <div class="ratingsBar">Seating:
+        <div class="ratingsBar">
+          <div class="ratingsBarText">Seating:</div>
           <div class="ratingsBarGray"></div>
-          {{ $seatRating }}
+          <div class="ratingsBarRating">{{ $seatRating }}</div>
         </div>
-        <div class="ratingsBar">Hours:
+        <div class="ratingsBar">
+          <div class="ratingsBarText">Hours:</div>
           <div class="ratingsBarGray"></div>
-          {{ $hoursRating }}
+          <div class="ratingsBarRating">{{ $hoursRating }}</div>
         </div>
       @endif
       </div>

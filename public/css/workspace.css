@@ -91,6 +91,12 @@ li {
 	margin-top: 12px;
 }
 
+.ratingsBarText {
+	float: left;
+	text-align: left;
+	width: 90px;
+}
+
 .ratingsBarGray {
 	background-color: #e5e6e7;
 	border-radius: 10px;
@@ -99,7 +105,14 @@ li {
 	margin-left:24px;
 	margin-right: 12px;
 	position: relative;
-	width: 161px;
+	width: -webkit-calc( 100% - 150px );
+}
+
+.ratingsBarRating {
+	float:right;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	text-align: right;
 }
 
 .reviewOutline {
@@ -121,6 +134,12 @@ li {
 	cursor: pointer;
 }
 
+@media only screen and (max-width: 1900px) {
+	.ratingsBarGray {
+		width: -webkit-calc( 100% - 150px );
+	}
+}
+
 @media only screen and (max-width: 1125px) {
 	.workspaceMain {
 		float: left;
@@ -128,6 +147,7 @@ li {
 		margin-right: 24px;
 		width: 90%;
 	}
+
 	.sidebar {
 		box-sizing: border-box;
 		margin: 0;
@@ -135,23 +155,15 @@ li {
 	}
 
 	.mapContainerSm {
-		background-color: #f3f6f7;
-		height: 300px;
-		float: right;
-		width: 100%;
-		z-index: 1;
-	}
-
-	#mapSm {
-		display: block !important;
-		height: 100%;
-		width: 100%;
+		height: 400px;
+		margin-left: 24px;
+		margin-right: 24px;
+		width: -webkit-calc( 100% - 48px );
 	}
 
 	.ratingSection {
-		margin: 48px;
 		text-align: center;
-		width: 85%;
+		width: 100%;
 	}
 
 	.rating-md {
@@ -159,13 +171,22 @@ li {
 		display: inline-block;
 		height: 30px;
 		text-align: center;
-		width: 100%;
+		width: -webkit-calc( 100% - 48px );
+	}
+
+	.ratingsBarSection {
+		margin: 24px;
+		width: -webkit-calc( 100% - 48px );
 	}
 
 	.ratingsBar {
 		display: block;
 		margin-top: 12px;
 		text-align: center;
-		width: 100%;
+		width: -webkit-calc( 100% - 48px );
+	}
+
+	.reviewOutline {
+		width: -webkit-calc( 100% - 48px );
 	}
 }
