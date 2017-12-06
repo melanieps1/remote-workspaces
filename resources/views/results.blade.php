@@ -36,9 +36,17 @@
           <h5>{{ $workspace->category->name }}</h5>
           <div class="results-card-desc-container">
             <div class="rating-sm">
+            @if ($workspace->ratingsCount === 0)
+              <p class="ratings-text">--</p>
+            @else
               <p class="ratings-text">{{ $workspace->overallRating }}</p>
+            @endif
             </div>
-            <p class="results-card-desc">35 total reviews</p>
+          @if ($workspace->ratingsCount === 1)
+            <p class="results-card-desc">{{ $workspace->ratingsCount }} total review</p>
+          @else
+            <p class="results-card-desc">{{ $workspace->ratingsCount }} total reviews</p>
+          @endif
           </div>
         </div>
 

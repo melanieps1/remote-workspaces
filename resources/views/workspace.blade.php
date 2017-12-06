@@ -31,9 +31,15 @@
   		
     </div>
   	<h5>{{ $workspace->category->name }}</h5>
+
     <div class="rating-sm">
-          <p class="ratings-text">{{ $overallRating }}</p>
-        </div>
+    @if ($workspace->ratingsCount === 0)
+      <p class="ratings-text">--</p>
+    @else
+      <p class="ratings-text">{{ $overallRating }}</p>
+    @endif
+    </div>
+
   	<p>{{ $workspace->address }}</p>
 	@if ($workspace->website != null)
   	<a href="{{$workspace->website}}" target="_blank" class="blueLink"><i class="fa fa-external-link" aria-hidden="true"></i>View Website</a>
@@ -67,15 +73,22 @@
     <div class="ratingSection">
 
       <div class="rating-md">
+      @if ($workspace->ratingsCount === 0)
+        <p class="ratings-text">Overall Rating: --</p>
+      @else
         <p class="ratings-text">Overall Rating: {{ $overallRating }}</p>
-        @if ($ratingsCount === 1)
-          <div class="reviewNumber"><i class="fa fa-star" aria-hidden="true"></i> {{ $ratingsCount }} Total Review</div>
+      @endif
+        @if ($workspace->ratingsCount === 1)
+          <div class="reviewNumber"><i class="fa fa-star" aria-hidden="true"></i> {{ $workspace->ratingsCount }} Total Review</div>
         @else
-          <div class="reviewNumber"><i class="fa fa-star" aria-hidden="true"></i> {{ $ratingsCount }} Total Reviews</div>
+          <div class="reviewNumber"><i class="fa fa-star" aria-hidden="true"></i> {{ $workspace->ratingsCount }} Total Reviews</div>
         @endif
       </div>
 
-      <div>      
+      <div>
+      @if ($workspace->ratingsCount === 0)
+        <br>No ratings yet!
+      @else
         <div class="ratingsBar">Wifi Speed:
           <div class="ratingsBarGray"></div>
           {{ $wifiRating }}
@@ -100,6 +113,7 @@
           <div class="ratingsBarGray"></div>
           {{ $hoursRating }}
         </div>
+      @endif
       </div>
 
       <a href="#"><button class="reviewOutline">Add a Review</button></a>

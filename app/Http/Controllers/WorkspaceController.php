@@ -65,6 +65,7 @@ class WorkspaceController extends Controller
 
         foreach ($workspaces as $workspace) {
             $workspace->overallRating = $this->overallRating($workspace->id);
+            $workspace->ratingsCount = $this->ratingsCount($workspace->id);
         }
 
         return view('/results', compact('workspaces', 'formattedAddress', 'lat', 'lng', 'neLatViewport', 'neLngViewport', 'swLatViewport', 'swLngViewport'));
@@ -86,7 +87,7 @@ class WorkspaceController extends Controller
                 + $rating->seating_rating
                 + $rating->hours_rating;
         
-            $rating->average = round($sum/6, 1);
+            $rating->average = number_format($sum/6, 1);
         }
 
         // calculation for workspace rating
@@ -98,13 +99,26 @@ class WorkspaceController extends Controller
         }
 
         if (count($ratings) > 0) {
-            $overallRating = round($ratingSum / count($ratings), 1);
+            $overallRating = number_format($ratingSum / count($ratings), 1);
         } else {
             $overallRating = 0;
         }
 
         return $overallRating;
+
+        $ratingsCount = count($ratings);
+
+        return $ratingsCount;
     }
+
+    public function ratingsCount($id)
+    {
+        $ratings = \App\Rating::where('workspace_id', '=', $id)->get();
+
+        $ratingsCount = count($ratings);
+
+        return $ratingsCount;
+    }    
 
     /**
      * Show the form for creating a new resource.
@@ -204,14 +218,14 @@ class WorkspaceController extends Controller
                 + $rating->seating_rating
                 + $rating->hours_rating;
         
-            $rating->average = round($sum/6, 1);
+            $rating->average = number_format($sum/6, 1);
         }
 
 
         // number of reviews on workspace
 
-        $ratingsCount = count($ratings);
-
+        // $ratingsCount = count($ratings);
+        $workspace->ratingsCount = $this->ratingsCount($workspace->id);
 
         // calculation for ratings of each amenity
 
@@ -220,7 +234,7 @@ class WorkspaceController extends Controller
             $wifiRatingSum += $rating->wifi_rating;
         }
         if (count($ratings) > 0) {
-            $wifiRating = round($wifiRatingSum / count($ratings), 1);
+            $wifiRating = number_format($wifiRatingSum / count($ratings), 1);
         } else {
             $wifiRating = 0;
         }
@@ -230,7 +244,7 @@ class WorkspaceController extends Controller
             $locationRatingSum += $rating->location_rating;
         }
         if (count($ratings) > 0) {
-            $locationRating = round($locationRatingSum / count($ratings), 1);
+            $locationRating = number_format($locationRatingSum / count($ratings), 1);
         } else {
             $locationRating = 0;
         }
@@ -240,7 +254,7 @@ class WorkspaceController extends Controller
             $noiseRatingSum += $rating->noise_rating;
         }
         if (count($ratings) > 0) {
-            $noiseRating = round($noiseRatingSum / count($ratings), 1);
+            $noiseRating = number_format($noiseRatingSum / count($ratings), 1);
         } else {
             $noiseRating = 0;
         }
@@ -250,7 +264,7 @@ class WorkspaceController extends Controller
             $outletRatingSum += $rating->outlets_rating;
         }
         if (count($ratings) > 0) {
-            $outletRating = round($outletRatingSum / count($ratings), 1);
+            $outletRating = number_format($outletRatingSum / count($ratings), 1);
         } else {
             $outletRating = 0;
         }
@@ -260,7 +274,7 @@ class WorkspaceController extends Controller
             $seatRatingSum += $rating->seating_rating;
         }
         if (count($ratings) > 0) {
-            $seatRating = round($seatRatingSum / count($ratings), 1);
+            $seatRating = number_format($seatRatingSum / count($ratings), 1);
         } else {
             $seatRating = 0;
         }
@@ -270,7 +284,7 @@ class WorkspaceController extends Controller
             $hoursRatingSum += $rating->hours_rating;
         }
         if (count($ratings) > 0) {
-            $hoursRating = round($hoursRatingSum / count($ratings), 1);
+            $hoursRating = number_format($hoursRatingSum / count($ratings), 1);
         } else {
             $hoursRating = 0;
         }
