@@ -54,6 +54,10 @@
                         </form>
                     @endif
             </div>
+
+            <div class="nav-hamburger">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
         </nav>
 
 @yield('content')

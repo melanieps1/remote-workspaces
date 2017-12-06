@@ -4,6 +4,32 @@ html, body {
 	margin: 0;
 }
 
+.nav-hamburger {
+	display: none;
+}
+
+@media only screen and (max-width: 480px) {
+
+	.nav-hamburger {
+		color: white;
+		display: block;
+		float: right;
+		font-size: 24px;
+		margin-right: 24px;
+		margin-top: 8px;
+	}
+
+	.nav-hamburger:hover {
+		cursor: pointer;
+		opacity: 0.8;
+	}
+
+	.nav-buttons {
+		display: none;
+	}
+
+}
+
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
