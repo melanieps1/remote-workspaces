@@ -16,6 +16,9 @@
     <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/e81701c933.js"></script>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
