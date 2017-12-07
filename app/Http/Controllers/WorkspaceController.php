@@ -144,33 +144,21 @@ class WorkspaceController extends Controller
         $workspace->submitted_by_id = \Auth::user()->id;
         $workspace->description = $request->input('description');
 
-        $website = $request->input('website');
-
-        $parse = parse_url($website);
-        if($parse['scheme'] === 'http') {
-            $url = str_replace('http', 'https', $website);
-        }
-
-        $workspace->website = $url;
+        $workspace->website = $request->input('website');
 
         // This code geocodes the search bar input and passes it to the results page
 
         $string = $request->input('address');
 
-        $string = str_replace (" ", "+", urlencode($string));
-        $details_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . $string . "&sensor=false";
+        $address = urlencode($string);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $details_url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = json_decode(curl_exec($ch), true);
+        $url = "https://maps.google.com/maps/api/geocode/json?address={$address}&key=AIzaSyBkHa5kHr_JkqqHCf4Yz44SyYuMFDUX8Uw";
 
-        // Error state (if Status Code is ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST)
-        if ($response['status'] != 'OK') {
-            // sleep(1);
-            // $response = json_decode(curl_exec($ch), true);
-            // Google is rejecting request (over query limit), stretch goal: retry x times after sleeping for a second
-        }
+        // get the json response
+        $resp_json = file_get_contents($url);
+         
+        // decode the json
+        $response = json_decode($resp_json, true);
 
         // print_r($response);
         $geoloc = $response['results'][0]['geometry'];
