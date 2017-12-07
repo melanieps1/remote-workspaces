@@ -35,7 +35,7 @@
         <div>
           <label>Description</label>
           <div>
-            <textarea type="text" name="description" placeholder="Enter description" class="textInput" height="150" required></textarea>
+            <textarea type="text" name="description" placeholder="Enter description" class="textInput" required></textarea>
           </div>
         </div>
 
