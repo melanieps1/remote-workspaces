@@ -42,7 +42,7 @@
         <div>
           <label>Website</label>
           <div>
-            <input type="text" name="website" placeholder="https://www.example.com" class="addInput">
+            <input type="url" name="website" placeholder="https://www.example.com" class="addInput">
           </div>
         </div>
 

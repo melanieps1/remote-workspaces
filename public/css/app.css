@@ -543,6 +543,7 @@ li {
 }
 
 .reviewOutline {
+	background-color: white;
 	border: 1px solid #FF5722;
 	color: #FF5722;
 	font-family: 'Open Sans', sans-serif;

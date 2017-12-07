@@ -143,7 +143,15 @@ class WorkspaceController extends Controller
 
         $workspace->submitted_by_id = \Auth::user()->id;
         $workspace->description = $request->input('description');
-        $workspace->website = $request->input('website');
+
+        $website = $request->input('website');
+
+        $parse = parse_url($website);
+        if($parse['scheme'] === 'http') {
+            $url = str_replace('http', 'https', $website);
+        }
+
+        $workspace->website = $url;
 
         // This code geocodes the search bar input and passes it to the results page
 
